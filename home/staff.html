@@ -9,7 +9,7 @@ h1{font-weight:400;font-size:20px;letter-spacing:.1em;margin:14px 0 4px}ol{paddi
 <p style="font-size:13px;color:#8a918d">次からはアイコンを押すと、すぐに開きます。</p><a class="b" id="go" href="#">いま開く</a></div>
 <script>
 // ?add のときだけ案内を出す。ホーム画面から開いたときはすぐ本体へ。
-const target=(()=>{return 'https://script.google.com/macros/s/AKfycbzHRyRh5fSmzSQK_4wYfw-bYMxAIYUdzrZL9HM8P2SmzsE3FsIeHnJ9zqEcKTlQZHkeaw/exec';})();
+const target=(()=>{return 'https://script.google.com/macros/s/AKfycbxrcqxUZIrz3oJk_KJ8HEOxyUlR-jmKsWwChBmt__Y0DFWFc_YNpBJQgmb8gltq2_GL4A/exec?page=app';})();
 if(new URLSearchParams(location.search).has('add')){history.replaceState(null,'',location.pathname+location.hash);document.getElementById('w').style.display='block';document.getElementById('go').href=target||'#';}
 else if(target)location.replace(target);else{document.getElementById('w').style.display='block';}
 </script></body></html>
