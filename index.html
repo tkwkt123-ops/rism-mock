@@ -300,12 +300,12 @@ function setTheme(t) {
 
 /* ================= 誰が見ているか ================= */
 let who = 'わか';
-const isOwner = () => who !== '千葉'; // 売上・連絡先が見られる人
+const isOwner = () => who !== '千葉'; // 売上が見られる人（連絡先は全員）
 function renderWho() {
   ['who1', 'who2', 'who3', 'who4'].forEach(id => document.getElementById(id).innerHTML = ['わか', '古賀', '千葉'].map(n => `<button class="${n === who ? 'on' : ''}" onclick="setWho('${n}')">${n}</button>`).join(''));
   document.getElementById('tab-num').style.display = isOwner() ? '' : 'none';
 }
-function setWho(n) { who = n; renderWho(); if (!isOwner() && current === 'num') go('today'); renderAll(); toast(isOwner() ? `${n}さんの画面（売上も見える）` : `${n}さんの画面（売上・連絡先は見えない）`); }
+function setWho(n) { who = n; renderWho(); if (!isOwner() && current === 'num') go('today'); renderAll(); toast(isOwner() ? `${n}さんの画面（売上も見える）` : `${n}さんの画面（売上は見えない）`); }
 
 /* ================= 小道具 ================= */
 const $ = s => document.querySelector(s);
@@ -384,7 +384,7 @@ function showCust(id) {
     <div class="sec"><span class="eyebrow">LESSONS</span></div>
     ${lessons.map((d, i) => `<div class="lesson"><span>${fmt(d)}　${['古賀', '千葉'][i % 2]}</span><span class="muted">${c.plan}${isOwner() ? '' : ''}</span></div>`).join('') || '<div class="muted">まだありません</div>'}
     <div class="sec"><span class="eyebrow">CONTACT</span></div>
-    <div class="muted" style="line-height:1.9">${isOwner() ? '電話 090-0000-0000（架空）<br>メール sample@example.com' : '連絡先は わか・古賀さんだけが見られます'}</div>`);
+    <div class="muted" style="line-height:1.9">電話 090-0000-0000（架空）<br>メール sample@example.com</div>`);
 }
 function writeNote(id) {
   const c = cust(id);
