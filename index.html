@@ -133,41 +133,88 @@
   .lock { text-align: center; padding: 60px 20px; color: var(--soft); line-height: 2; }
   .toast { position: fixed; left: 50%; top: calc(env(safe-area-inset-top) + 34px); transform: translateX(-50%); background: var(--ink); color: var(--paper); padding: 8px 16px; border-radius: 20px; font-size: 13px; z-index: 60; opacity: 0; transition: opacity .2s; pointer-events: none; white-space: nowrap; }
   .toast.on { opacity: 1; }
+
+  /* ===== 共通：ヒーロー・線画 ===== */
+  .mock-band button { border: 1px solid var(--ink); background: transparent; border-radius: 10px; padding: 0 8px; margin-left: 4px; font-size: 11px; cursor: pointer; }
+  .mock-band button.on { background: var(--ink); color: var(--sun); }
+  .top { display: none; }
+  .hero { position: relative; margin-bottom: 10px; }
+  .hero-in { max-width: 720px; margin: 0 auto; padding: 14px 16px 0; position: relative; min-height: 150px; }
+  .hero .who { position: absolute; right: 16px; top: 12px; z-index: 3; }
+  .hero-txt { position: relative; z-index: 2; padding-top: 34px; }
+  .hero-txt h2 { font-size: 30px; font-weight: 500; letter-spacing: .02em; }
+  .hero .art { position: absolute; right: 8px; bottom: -6px; width: 170px; height: 120px; z-index: 1; }
+  .hero .art svg, .hills svg { width: 100%; height: 100%; display: block; }
+  .hills { height: 46px; margin-top: -4px; position: relative; z-index: 0; }
+  .ic svg { width: 26px; height: 26px; }
+  .tabbar .ic { filter: none !important; opacity: 1 !important; width: 38px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background .2s; }
+  .tabbar button.on .ic { background: var(--tabon); }
+  .empty-art { width: 180px; margin: 10px auto 0; display: block; }
+
+  /* ===== A：丘（be kids） ===== */
+  body.a { --paper: #f4f6ec; --card: #ffffff; --green: #4f8a68; --tabon: #dcecc9; --ink: #34423a; }
+  body.a::before { background: radial-gradient(40% 30% at 85% 4%, rgba(207,232,222,.9), transparent 70%), radial-gradient(30% 25% at 10% 10%, rgba(220,236,201,.8), transparent 70%); filter: blur(10px); }
+  body.a .hero { background: linear-gradient(#eef5e4, #e4efd6); }
+  body.a .hero-txt h2 { font-family: var(--mincho); color: #34423a; }
+  body.a .hero .eyebrow { color: #4f8a68; }
+  body.a .slot, body.a .box, body.a .point, body.a .q, body.a .search { border-radius: 18px; border-color: #e3ead6; box-shadow: 0 2px 0 #e3ead6; }
+  body.a .avatar { border: 2px solid #fff; box-shadow: 0 0 0 1.5px #c6dca8; }
+  body.a .sheet { background: #f4f6ec; }
+
+  /* ===== B：深緑（natomi宿＋丘） ===== */
+  body.b { --paper: #f7f4ec; --green: #275a45; --tabon: #f6dcd6; }
+  body.b::before { display: none; }
+  body.b .hero { background: #275a45; color: #f7f4ec; }
+  body.b .hero-txt h2 { font-family: var(--hand); font-weight: 600; color: #f7f4ec; font-size: 28px; }
+  body.b .hero .eyebrow { color: #f2d46b; }
+  body.b .hero .who { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.25); }
+  body.b .hero .who button { color: #f7f4ec; }
+  body.b .hero .who button.on { background: #f7f4ec; color: #275a45; }
+  body.b .summary > div { background: #f6dcd6; border-radius: 60px 60px 12px 12px; padding: 16px 14px 10px; text-align: center; flex: 1; }
+  body.b .summary > div:nth-child(2) { background: #dcecc9; }
+  body.b .summary > div:nth-child(3) { background: #faefc4; }
+  body.b .summary .n { font-family: var(--hand); }
+  body.b .summary > div:nth-child(3) .n { font-size: 22px !important; padding-top: 12px !important; white-space: nowrap; }
+  body.b .slot.trial { border-color: #f0b7ad; box-shadow: inset 4px 0 0 #f0b7ad; }
+  body.b .slot.trial .tag.sun { background: #f6dcd6; color: #a8473f; }
+  body.b .sec .eyebrow, body.b .lab { font-family: var(--hand); }
+  body.b .kpi { border-top-color: #275a45; }
+  body.b .cols .c i { background: #275a45; }
 </style>
 </head>
 <body>
-<div class="mock-band">見本です（お客様・数字はすべて架空）。右上で「誰が見ているか」を切り替えられます</div>
+<div class="mock-band">見本（架空のデータ）　デザイン <button onclick="setTheme('a')" id="th-a">A 丘</button><button onclick="setTheme('b')" id="th-b">B 深緑</button></div>
 
-<section class="view on" id="v-today"><div class="wrap">
-  <div class="top"><div><div class="eyebrow">R'ISM TODAY</div><h2 id="t-date"></h2></div><div class="who" id="who1"></div></div>
+<section class="view on" id="v-today">
+  <header class="hero" data-art="today"><div class="hero-in"><div class="who" id="who1"></div><div class="hero-txt"><div class="eyebrow">R'ISM TODAY</div><h2 id="t-date"></h2></div><div class="art"></div></div><div class="hills"></div></header><div class="wrap">
   <div class="daybar"><div class="seg"><button data-d="0" class="on">今日</button><button data-d="1">明日</button></div><span class="muted" id="t-hours"></span></div>
   <div class="summary" id="t-sum"></div>
   <div id="t-list"></div>
 </div></section>
 
-<section class="view" id="v-cust"><div class="wrap">
-  <div class="top"><div><div class="eyebrow">MEMBERS</div><h2>お客様</h2></div><div class="who" id="who2"></div></div>
+<section class="view" id="v-cust">
+  <header class="hero" data-art="cust"><div class="hero-in"><div class="who" id="who2"></div><div class="hero-txt"><div class="eyebrow">MEMBERS</div><h2>お客様</h2></div><div class="art"></div></div><div class="hills"></div></header><div class="wrap">
   <input class="search" id="c-q" placeholder="名前・ふりがな・電話で探す">
   <div class="chips" id="c-filter"></div>
   <div id="c-list"></div>
 </div></section>
 
-<section class="view" id="v-queue"><div class="wrap">
-  <div class="top"><div><div class="eyebrow">TO CHECK</div><h2>確認</h2></div><div class="who" id="who3"></div></div>
+<section class="view" id="v-queue">
+  <header class="hero" data-art="queue"><div class="hero-in"><div class="who" id="who3"></div><div class="hero-txt"><div class="eyebrow">TO CHECK</div><h2>確認</h2></div><div class="art"></div></div><div class="hills"></div></header><div class="wrap">
   <p class="muted" style="line-height:1.8;margin-top:0">予約やStripeの取り込みで、自動では決められなかったものです。ボタンを押すとシートに反映されます。</p>
   <div id="q-list"></div>
 </div></section>
 
-<section class="view" id="v-num"><div class="wrap">
-  <div class="top"><div><div class="eyebrow">NUMBERS</div><h2>数字</h2></div><div class="who" id="who4"></div></div>
+<section class="view" id="v-num">
+  <header class="hero" data-art="num"><div class="hero-in"><div class="who" id="who4"></div><div class="hero-txt"><div class="eyebrow">NUMBERS</div><h2>数字</h2></div><div class="art"></div></div><div class="hills"></div></header><div class="wrap">
   <div id="n-body"></div>
 </div></section>
 
 <nav class="tabbar">
-  <button data-v="today" class="on"><span class="ic">⛳️</span>今日</button>
-  <button data-v="cust"><span class="ic">👤</span>お客様</button>
-  <button data-v="queue"><span class="ic">✅</span>確認<span class="badge" id="q-badge"></span></button>
-  <button data-v="num" id="tab-num"><span class="ic">📈</span>数字</button>
+  <button data-v="today" class="on"><span class="ic" data-i="today"></span>今日</button>
+  <button data-v="cust"><span class="ic" data-i="cust"></span>お客様</button>
+  <button data-v="queue"><span class="ic" data-i="queue"></span>確認<span class="badge" id="q-badge"></span></button>
+  <button data-v="num" id="tab-num"><span class="ic" data-i="num"></span>数字</button>
 </nav>
 
 <div class="sheet-bg" id="bg" onclick="closeSheet()"></div>
@@ -217,14 +264,48 @@ const QUEUE = [
   { code: '6d21', cid: 'C012', title: '藤井 智子さん　回数券の残り', why: '回数券の残りが1回です。次回の来店（10/24）で使い切ります。', acts: [['次回お声がけする', 1], ['もう伝えた', 0]] },
 ];
 
+/* ================= 線画（手描き風のSVG） ================= */
+const L = (c, w = 1.6) => `fill="none" stroke="${c}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round"`;
+const ICONS = {
+  today: c => `<svg viewBox="0 0 32 32"><path ${L(c)} d="M5 25c5-3 17-3 22 0"/><path ${L(c)} d="M15 24V6"/><path ${L(c)} d="M15 6.5l8 3.2-8 3.3"/><circle ${L(c)} cx="21" cy="23" r="1.6"/></svg>`,
+  cust: c => `<svg viewBox="0 0 32 32"><circle ${L(c)} cx="16" cy="11" r="5"/><path ${L(c)} d="M7 27c1-6 4.5-8.5 9-8.5s8 2.5 9 8.5"/></svg>`,
+  queue: c => `<svg viewBox="0 0 32 32"><rect ${L(c)} x="8" y="6" width="16" height="21" rx="3"/><path ${L(c)} d="M12.5 6.5h7v-2h-7z"/><path ${L(c)} d="M11.5 15l3 3 6-6"/><path ${L(c)} d="M12 23h8"/></svg>`,
+  num: c => `<svg viewBox="0 0 32 32"><path ${L(c)} d="M6 26h20"/><path ${L(c)} d="M9 26v-7M15 26V12M21 26v-10"/><path ${L(c)} d="M8 13l6-5 5 4 6-6"/></svg>`,
+};
+function scene(kind, t) {
+  const ink = t === 'b' ? '#f7f4ec' : '#3d4a42', sun = t === 'b' ? '#f2d46b' : '#f2d46b', leaf = t === 'b' ? '#4f8a68' : '#a9cf93', leaf2 = t === 'b' ? '#6fa07f' : '#cfe3b8';
+  const sunG = `<circle cx="38" cy="30" r="12" fill="${sun}" opacity=".85"/><circle ${L(ink, 1.3)} cx="40" cy="28" r="11"/>${[0, 45, 90, 135, 180, 225, 270, 315].map(a => { const r = a * Math.PI / 180; return `<path ${L(ink, 1.3)} d="M${40 + Math.cos(r) * 15} ${28 + Math.sin(r) * 15}L${40 + Math.cos(r) * 20} ${28 + Math.sin(r) * 20}"/>`; }).join('')}`;
+  const tree = (x, s = 1) => `<g transform="translate(${x} ${118 - 70 * s}) scale(${s})"><ellipse cx="18" cy="24" rx="16" ry="22" fill="${leaf}"/><ellipse ${L(ink, 1.3)} cx="19" cy="23" rx="15" ry="21"/><path ${L(ink, 1.3)} d="M19 30v40M19 44l-6-6M19 52l6-6"/></g>`;
+  const flag = (x, y) => `<g transform="translate(${x} ${y})"><path ${L(ink, 1.4)} d="M0 0v-46"/><path d="M0-46l18 7-18 7z" fill="#c9504a"/><path ${L(ink, 1.2)} d="M0-46l18 7-18 7"/><ellipse ${L(ink, 1.2)} cx="0" cy="1" rx="7" ry="2"/></g>`;
+  const ball = (x, y) => `<g transform="translate(${x} ${y})"><circle cx="0" cy="0" r="5" fill="#fff"/><circle ${L(ink, 1.3)} cx="0" cy="0" r="5"/><path ${L(ink, 1.2)} d="M-3 6h6M0 6v6"/></g>`;
+  const person = (x, y) => `<g transform="translate(${x} ${y})" ${L(ink, 1.4)}><circle cx="0" cy="-34" r="7" fill="${t === 'b' ? '#275a45' : '#fff'}"/><path d="M-2-38c2-3 6-2 7 1"/><path d="M0-27v18M0-22l-9 6M0-22l10-7M0-9l-6 13M0-9l6 13"/><path d="M10-29l14 26" stroke-width="1.8"/><path d="M24-3l4 1"/></g>`;
+  const clip = (x, y) => `<g transform="translate(${x} ${y})" ${L(ink, 1.4)}><rect x="0" y="0" width="34" height="44" rx="5" fill="${t === 'b' ? '#275a45' : '#fff'}"/><path d="M10 0v-4h14v4"/><path d="M8 16l4 4 8-8M8 32h18"/></g>`;
+  const chart = (x, y) => `<g transform="translate(${x} ${y})" ${L(ink, 1.4)}><rect x="0" y="-18" width="9" height="18" fill="${leaf2}"/><rect x="13" y="-34" width="9" height="34" fill="${leaf}"/><rect x="26" y="-26" width="9" height="26" fill="#f6dcd6"/><path d="M-3 0h42"/></g>`;
+  const main = { today: flag(118, 104) + ball(78, 104), cust: person(108, 112) + ball(140, 112), queue: clip(98, 62) + flag(150, 108), num: chart(96, 108) + ball(150, 108) }[kind];
+  return `<svg viewBox="0 0 170 120">${sunG}${tree(4, .85)}${main}</svg>`;
+}
+function hills(t) {
+  if (t === 'b') return `<svg viewBox="0 0 400 46" preserveAspectRatio="none"><path d="M0 46V30C40 30 70 4 120 4s70 26 110 26 60-22 100-22 70 16 70 16v22z" fill="#f7f4ec"/></svg>`;
+  return `<svg viewBox="0 0 400 46" preserveAspectRatio="none"><path d="M0 22C60 4 120 6 180 18s130 2 220-12v40H0z" fill="#cfe3b8"/><path d="M0 34C70 18 140 18 220 30s120 0 180-10v26H0z" fill="#a9cf93"/><path d="M0 46V40c80-8 150-8 230 0s120 2 170-4v10z" fill="#f4f6ec"/></svg>`;
+}
+let theme = new URLSearchParams(location.search).get('t') === 'b' ? 'b' : 'a';
+function setTheme(t) {
+  theme = t; document.body.className = t;
+  history.replaceState(null, '', '?t=' + t);
+  document.querySelectorAll('.hero').forEach(h => { h.querySelector('.art').innerHTML = scene(h.dataset.art, t); h.querySelector('.hills').innerHTML = hills(t); });
+  document.querySelectorAll('.tabbar .ic').forEach(i => i.innerHTML = ICONS[i.dataset.i](i.parentElement.classList.contains('on') ? (t === 'b' ? '#275a45' : '#4f8a68') : '#9aa39d'));
+  ['a', 'b'].forEach(x => document.getElementById('th-' + x).classList.toggle('on', x === t));
+  renderQueue();
+}
+
 /* ================= 誰が見ているか ================= */
 let who = 'わか';
-const isOwner = () => who === 'わか';
+const isOwner = () => who !== '千葉'; // 売上・連絡先が見られる人
 function renderWho() {
   ['who1', 'who2', 'who3', 'who4'].forEach(id => document.getElementById(id).innerHTML = ['わか', '古賀', '千葉'].map(n => `<button class="${n === who ? 'on' : ''}" onclick="setWho('${n}')">${n}</button>`).join(''));
   document.getElementById('tab-num').style.display = isOwner() ? '' : 'none';
 }
-function setWho(n) { who = n; renderWho(); if (!isOwner() && current === 'num') go('today'); renderAll(); toast(isOwner() ? 'わかさんの画面（売上も見える）' : `${n}さんの画面（売上は見えない）`); }
+function setWho(n) { who = n; renderWho(); if (!isOwner() && current === 'num') go('today'); renderAll(); toast(isOwner() ? `${n}さんの画面（売上も見える）` : `${n}さんの画面（売上・連絡先は見えない）`); }
 
 /* ================= 小道具 ================= */
 const $ = s => document.querySelector(s);
@@ -244,7 +325,7 @@ function closeSheet() { $('#sheet').classList.remove('on'); $('#bg').classList.r
 
 let current = 'today';
 document.querySelectorAll('.tabbar button').forEach(b => b.onclick = () => go(b.dataset.v));
-function go(v) { current = v; document.querySelectorAll('.tabbar button').forEach(x => x.classList.toggle('on', x.dataset.v === v)); document.querySelectorAll('.view').forEach(x => x.classList.toggle('on', x.id === 'v-' + v)); scrollTo(0, 0); }
+function go(v) { current = v; setTimeout(() => setTheme(theme)); document.querySelectorAll('.tabbar button').forEach(x => x.classList.toggle('on', x.dataset.v === v)); document.querySelectorAll('.view').forEach(x => x.classList.toggle('on', x.id === 'v-' + v)); scrollTo(0, 0); }
 
 /* ================= 今日・明日 ================= */
 let dayOff = 0;
@@ -303,7 +384,7 @@ function showCust(id) {
     <div class="sec"><span class="eyebrow">LESSONS</span></div>
     ${lessons.map((d, i) => `<div class="lesson"><span>${fmt(d)}　${['古賀', '千葉'][i % 2]}</span><span class="muted">${c.plan}${isOwner() ? '' : ''}</span></div>`).join('') || '<div class="muted">まだありません</div>'}
     <div class="sec"><span class="eyebrow">CONTACT</span></div>
-    <div class="muted" style="line-height:1.9">${isOwner() ? '電話 090-0000-0000（架空）<br>メール sample@example.com' : '連絡先はわかさんだけが見られます'}</div>`);
+    <div class="muted" style="line-height:1.9">${isOwner() ? '電話 090-0000-0000（架空）<br>メール sample@example.com' : '連絡先は わか・古賀さんだけが見られます'}</div>`);
 }
 function writeNote(id) {
   const c = cust(id);
@@ -327,7 +408,7 @@ function renderQueue() {
   $('#q-badge').style.display = QUEUE.length ? '' : 'none';
   $('#q-list').innerHTML = QUEUE.map((q, i) => `<div class="q" id="q${i}"><div class="code">NO.${q.code}</div><div class="ttl" onclick="showCust('${q.cid}')" style="cursor:pointer">${q.title}</div><div class="why">${q.why}</div>
     <div class="acts">${q.acts.map(([l, main], j) => `<button class="${main ? 'main' : ''}" onclick="resolve(${i},${j})">${l}</button>`).join('')}<button class="later" onclick="toast('あとで（そのまま残ります）')">あとで</button></div></div>`).join('')
-    || '<div class="lock">🎉<br>確認することはありません</div>';
+    || `<div class="lock"><div class="empty-art">${scene('today', theme === 'b' ? 'a' : theme)}</div>確認することはありません<br>いい一日を ⛳️</div>`;
 }
 function resolve(i, j) {
   const q = QUEUE[i], el = document.getElementById('q' + i);
@@ -337,7 +418,7 @@ function resolve(i, j) {
 
 /* ================= 数字（わかさんだけ） ================= */
 function renderNum() {
-  if (!isOwner()) { $('#n-body').innerHTML = '<div class="lock">🔒<br>売上の画面はわかさんだけが見られます</div>'; return; }
+  if (!isOwner()) { $('#n-body').innerHTML = '<div class="lock">🔒<br>売上の画面は わか・古賀さんだけが見られます</div>'; return; }
   const months = [['5月', 612], ['6月', 655], ['7月', 701], ['8月', 642], ['9月', 728], ['10月', 694]];
   const mx = Math.max(...months.map(m => m[1]));
   const bars = (rows, unit) => { const m = Math.max(...rows.map(r => r[1])); return rows.map(([k, v]) => `<div class="hbar"><span>${k}</span><span class="tr"><i style="width:${v / m * 100}%"></i></span><span>${unit(v)}</span></div>`).join(''); };
@@ -355,7 +436,7 @@ function renderNum() {
 }
 
 function renderAll() { renderToday(); renderFilters(); renderCust(); renderQueue(); renderNum(); }
-renderWho(); renderAll();
+renderWho(); renderAll(); setTheme(theme);
 </script>
 </body>
 </html>
