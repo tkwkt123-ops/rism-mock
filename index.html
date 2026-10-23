@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#f6f3ea">
+<title>R'ism 見本</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Maru+Gothic:wght@400;500;700&family=Klee+One:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f6f3ea; --card: #fffdf6; --ink: #2f3d37; --soft: #7b847f; --line: #e2ddcd;
+    --green: #2f6b4f; --turf: #8fb47a; --sky: #8fc3d9; --aqua: #cfe8de; --sun: #f2d46b; --red: #c9504a; --kraft: #c8a77a;
+    --mincho: "Shippori Mincho", "Hiragino Mincho ProN", serif; --maru: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", sans-serif; --hand: "Klee One", "Zen Maru Gothic", sans-serif;
+    --tab: 64px;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--maru); font-size: 15px; padding-bottom: calc(var(--tab) + env(safe-area-inset-bottom) + 24px); }
+  body::before { content: ""; position: fixed; inset: -10%; z-index: -1; pointer-events: none;
+    background: radial-gradient(38% 30% at 10% 6%, rgba(143,180,122,.38), transparent 70%), radial-gradient(30% 26% at 95% 14%, rgba(143,195,217,.35), transparent 70%),
+      radial-gradient(34% 28% at 82% 90%, rgba(207,232,222,.6), transparent 70%), radial-gradient(26% 22% at 15% 85%, rgba(242,212,107,.25), transparent 70%); filter: blur(20px); }
+  button { font-family: inherit; color: inherit; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 16px; }
+  .eyebrow { font-size: 11px; letter-spacing: .3em; color: var(--green); font-weight: 700; }
+  h1, h2, h3 { font-family: var(--mincho); margin: 0; }
+  .muted { color: var(--soft); font-size: 12px; }
+  .mock-band { background: var(--sun); color: var(--ink); font-size: 11px; text-align: center; padding: 4px; padding-top: calc(env(safe-area-inset-top) + 4px); letter-spacing: .05em; }
+  .top { display: flex; justify-content: space-between; align-items: flex-end; padding: 16px 0 12px; }
+  .top h2 { font-size: 26px; margin-top: 2px; }
+  .who { display: flex; gap: 4px; background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 3px; }
+  .who button { border: none; background: none; border-radius: 16px; padding: 4px 10px; font-size: 12px; cursor: pointer; }
+  .who button.on { background: var(--green); color: #fff; }
+  .view { display: none; } .view.on { display: block; animation: fade .2s; }
+  @keyframes fade { from { opacity: 0; transform: translateY(3px); } }
+
+  .tabbar { position: fixed; left: 0; right: 0; bottom: 0; height: calc(var(--tab) + env(safe-area-inset-bottom)); padding-bottom: env(safe-area-inset-bottom); background: rgba(246,243,234,.94); backdrop-filter: blur(10px); border-top: 1px solid var(--line); display: flex; z-index: 20; }
+  .tabbar button { flex: 1; border: none; background: none; font-size: 10px; color: var(--soft); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; cursor: pointer; position: relative; }
+  .tabbar .ic { font-size: 19px; filter: grayscale(1); opacity: .6; }
+  .tabbar button.on { color: var(--green); font-weight: 700; } .tabbar button.on .ic { filter: none; opacity: 1; }
+  .badge { position: absolute; top: 6px; left: calc(50% + 6px); background: var(--red); color: #fff; font-size: 9px; border-radius: 8px; padding: 0 5px; font-weight: 700; }
+
+  /* 今日 */
+  .seg { display: inline-flex; border: 1px solid var(--ink); border-radius: 6px; overflow: hidden; }
+  .seg button { border: none; background: none; padding: 5px 16px; font-size: 13px; cursor: pointer; }
+  .seg button.on { background: var(--ink); color: var(--paper); }
+  .daybar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+  .summary { display: flex; gap: 18px; margin: 8px 0 18px; }
+  .summary .n { font-family: var(--mincho); font-size: 40px; font-weight: 700; line-height: 1; }
+  .summary .n small { font-size: 14px; color: var(--red); margin-left: 2px; }
+  .slot { display: flex; gap: 12px; padding: 12px; background: var(--card); border: 1px solid var(--line); border-radius: 10px; margin-bottom: 10px; cursor: pointer; position: relative; }
+  .slot .time { font-family: var(--mincho); font-size: 18px; font-weight: 700; width: 52px; flex: none; }
+  .slot .time small { display: block; font-family: var(--maru); font-size: 10px; color: var(--soft); font-weight: 400; }
+  .slot .body { flex: 1; min-width: 0; }
+  .slot .nm { font-family: var(--mincho); font-size: 17px; font-weight: 700; }
+  .slot .pt { font-size: 13px; margin-top: 4px; line-height: 1.6; }
+  .slot.trial { border-color: var(--sun); box-shadow: inset 4px 0 0 var(--sun); }
+  .tags { margin-top: 6px; }
+  .tag { display: inline-block; font-size: 11px; padding: 1px 8px; border-radius: 10px; margin: 2px 4px 2px 0; background: var(--aqua); color: var(--green); }
+  .tag.warn { background: #f8dcd8; color: var(--red); }
+  .tag.sun { background: #faefc4; color: #8a6a12; }
+  .tag.gray { background: #ebe7dc; color: var(--soft); }
+
+  /* お客様 */
+  .search { width: 100%; padding: 11px 12px; border: 1px solid var(--line); background: var(--card); border-radius: 10px; font-size: 16px; font-family: inherit; }
+  .chips { display: flex; gap: 6px; overflow-x: auto; padding: 10px 0 12px; }
+  .chip { flex: none; border: 1.5px solid var(--green); color: var(--green); padding: 3px 12px; border-radius: 14px; font-size: 12px; background: transparent; cursor: pointer; }
+  .chip.on { background: var(--green); color: #fff; }
+  .cust { display: flex; gap: 12px; align-items: center; padding: 12px 4px; border-bottom: 1px dashed var(--line); cursor: pointer; }
+  .avatar { width: 44px; height: 44px; border-radius: 50%; flex: none; display: flex; align-items: center; justify-content: center; font-family: var(--mincho); font-weight: 700; color: #fff; font-size: 18px; }
+  .cust .main { flex: 1; min-width: 0; }
+  .cust .main b { font-family: var(--mincho); font-size: 16px; }
+  .cust .main .pt { font-size: 12px; color: var(--soft); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-top: 2px; }
+  .cust .rt { text-align: right; font-size: 11px; color: var(--soft); white-space: nowrap; }
+  .meter { display: inline-flex; gap: 3px; margin-top: 4px; }
+  .meter i { width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid var(--green); }
+  .meter i.used { background: var(--green); }
+
+  /* カード */
+  .sheet-bg { position: fixed; inset: 0; background: rgba(47,61,55,.4); z-index: 40; display: none; } .sheet-bg.on { display: block; }
+  .sheet { position: fixed; left: 0; right: 0; bottom: 0; max-height: 93vh; overflow-y: auto; background: var(--paper); border-radius: 18px 18px 0 0; z-index: 41; transform: translateY(100%); transition: transform .28s; padding: 10px 0 calc(env(safe-area-inset-bottom) + 24px); }
+  .sheet.on { transform: none; }
+  .grab { width: 44px; height: 5px; border-radius: 3px; background: #cfc6b2; margin: 0 auto 12px; cursor: pointer; }
+  .card-head { display: flex; gap: 14px; align-items: center; }
+  .card-head .avatar { width: 60px; height: 60px; font-size: 26px; }
+  .card-head h3 { font-size: 24px; }
+  .point { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; margin: 14px 0; font-family: var(--hand); font-size: 15px; line-height: 1.8; position: relative; }
+  .point .lab, .box .lab { font-family: var(--maru); font-size: 10px; letter-spacing: .3em; color: var(--soft); font-weight: 700; display: block; margin-bottom: 4px; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .box { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px; }
+  .box .v { font-family: var(--mincho); font-size: 22px; font-weight: 700; }
+  .box .v small { font-size: 12px; font-family: var(--maru); color: var(--soft); font-weight: 400; }
+  .event { display: flex; gap: 10px; align-items: center; background: #faefc4; border-radius: 10px; padding: 10px 12px; margin-top: 10px; font-size: 13px; }
+  .event b { font-family: var(--mincho); font-size: 18px; }
+  .sec { margin: 22px 0 8px; display: flex; justify-content: space-between; align-items: baseline; }
+  .note { border-left: 3px solid var(--turf); padding: 4px 0 4px 12px; margin-bottom: 14px; }
+  .note .meta { font-size: 11px; color: var(--soft); }
+  .note .tx { font-family: var(--hand); font-size: 15px; line-height: 1.8; margin-top: 2px; }
+  .lesson { display: flex; justify-content: space-between; padding: 9px 0; border-bottom: 1px dashed var(--line); font-size: 13px; }
+  .btn { border: 1.5px solid var(--ink); background: transparent; padding: 11px; border-radius: 8px; font-size: 14px; cursor: pointer; width: 100%; }
+  .btn.green { background: var(--green); border-color: var(--green); color: #fff; }
+  .btn.red { background: var(--red); border-color: var(--red); color: #fff; }
+  .form label { display: block; font-size: 10px; letter-spacing: .25em; color: var(--soft); font-weight: 700; margin: 14px 0 5px; }
+  .form input, .form textarea { width: 100%; padding: 10px 12px; border: 1px solid var(--line); background: var(--card); border-radius: 8px; font-family: inherit; font-size: 16px; color: var(--ink); }
+  .form textarea { font-family: var(--hand); min-height: 110px; line-height: 1.8; }
+
+  /* 確認 */
+  .q { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px; margin-bottom: 12px; transition: opacity .3s, transform .3s; }
+  .q.done { opacity: 0; transform: translateX(40px); }
+  .q .code { font-size: 10px; letter-spacing: .2em; color: var(--red); font-weight: 700; }
+  .q .ttl { font-family: var(--mincho); font-size: 17px; font-weight: 700; margin: 4px 0; }
+  .q .why { font-size: 13px; line-height: 1.7; color: var(--ink); }
+  .q .acts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .q .acts button { flex: 1 1 auto; border: 1.5px solid var(--green); background: transparent; color: var(--green); padding: 8px 10px; border-radius: 8px; font-size: 13px; cursor: pointer; }
+  .q .acts button.main { background: var(--green); color: #fff; }
+  .q .acts button.later { border-color: var(--line); color: var(--soft); flex: 0 0 auto; }
+
+  /* 数字 */
+  .kpi { display: grid; grid-template-columns: 1fr 1fr; border-top: 2px solid var(--ink); border-bottom: 1px dashed var(--soft); padding: 12px 0; margin-bottom: 4px; }
+  .kpi > div + div { border-left: 1px solid var(--line); padding-left: 14px; }
+  .kpi .v { font-family: var(--mincho); font-size: 30px; font-weight: 700; } .kpi .v small { font-size: 13px; }
+  .kpi .d { font-size: 11px; } .up { color: var(--green); } .down { color: var(--red); }
+  .blk { padding: 14px 0; border-bottom: 1px dashed var(--soft); }
+  .blk .lab { font-size: 10px; letter-spacing: .3em; color: var(--soft); font-weight: 700; margin-bottom: 10px; }
+  .cols { display: flex; align-items: flex-end; gap: 8px; height: 120px; }
+  .cols .c { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; font-size: 10px; color: var(--soft); }
+  .cols .c i { width: 100%; background: var(--green); border-radius: 3px 3px 0 0; }
+  .cols .c i.now { background: var(--red); }
+  .hbar { display: grid; grid-template-columns: 84px 1fr 64px; gap: 8px; align-items: center; font-size: 12px; margin: 6px 0; }
+  .hbar .tr { height: 10px; background: var(--line); border-radius: 5px; overflow: hidden; } .hbar .tr i { display: block; height: 100%; background: var(--green); }
+  .hbar span:last-child { text-align: right; color: var(--soft); }
+  .lock { text-align: center; padding: 60px 20px; color: var(--soft); line-height: 2; }
+  .toast { position: fixed; left: 50%; top: calc(env(safe-area-inset-top) + 34px); transform: translateX(-50%); background: var(--ink); color: var(--paper); padding: 8px 16px; border-radius: 20px; font-size: 13px; z-index: 60; opacity: 0; transition: opacity .2s; pointer-events: none; white-space: nowrap; }
+  .toast.on { opacity: 1; }
+</style>
+</head>
+<body>
+<div class="mock-band">見本です（お客様・数字はすべて架空）。右上で「誰が見ているか」を切り替えられます</div>
+
+<section class="view on" id="v-today"><div class="wrap">
+  <div class="top"><div><div class="eyebrow">R'ISM TODAY</div><h2 id="t-date"></h2></div><div class="who" id="who1"></div></div>
+  <div class="daybar"><div class="seg"><button data-d="0" class="on">今日</button><button data-d="1">明日</button></div><span class="muted" id="t-hours"></span></div>
+  <div class="summary" id="t-sum"></div>
+  <div id="t-list"></div>
+</div></section>
+
+<section class="view" id="v-cust"><div class="wrap">
+  <div class="top"><div><div class="eyebrow">MEMBERS</div><h2>お客様</h2></div><div class="who" id="who2"></div></div>
+  <input class="search" id="c-q" placeholder="名前・ふりがな・電話で探す">
+  <div class="chips" id="c-filter"></div>
+  <div id="c-list"></div>
+</div></section>
+
+<section class="view" id="v-queue"><div class="wrap">
+  <div class="top"><div><div class="eyebrow">TO CHECK</div><h2>確認</h2></div><div class="who" id="who3"></div></div>
+  <p class="muted" style="line-height:1.8;margin-top:0">予約やStripeの取り込みで、自動では決められなかったものです。ボタンを押すとシートに反映されます。</p>
+  <div id="q-list"></div>
+</div></section>
+
+<section class="view" id="v-num"><div class="wrap">
+  <div class="top"><div><div class="eyebrow">NUMBERS</div><h2>数字</h2></div><div class="who" id="who4"></div></div>
+  <div id="n-body"></div>
+</div></section>
+
+<nav class="tabbar">
+  <button data-v="today" class="on"><span class="ic">⛳️</span>今日</button>
+  <button data-v="cust"><span class="ic">👤</span>お客様</button>
+  <button data-v="queue"><span class="ic">✅</span>確認<span class="badge" id="q-badge"></span></button>
+  <button data-v="num" id="tab-num"><span class="ic">📈</span>数字</button>
+</nav>
+
+<div class="sheet-bg" id="bg" onclick="closeSheet()"></div>
+<div class="sheet" id="sheet"><div class="grab" onclick="closeSheet()"></div><div class="wrap" id="sheet-body"></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ================= 架空のデータ ================= */
+const TODAY = new Date(2026, 9, 23);
+const fmt = d => `${d.getMonth() + 1}/${d.getDate()}`;
+const addDays = (d, n) => { const x = new Date(d); x.setDate(x.getDate() + n); return x; };
+const COLORS = ['#2f6b4f', '#8fb47a', '#6fa9b8', '#c8a77a', '#c9504a', '#5f8f5a', '#e0b64a', '#8fc3d9'];
+
+const CUSTOMERS = [
+  { id: 'C001', name: '青木 誠', kana: 'あおき まこと', status: '在籍', plan: '月額(4)', quota: 4, used: 2, ticket: null, last: 3, point: '右手首を痛めやすい。目標は年内100切り。スライス改善中', event: { date: addDays(TODAY, 15), what: 'ラウンド（鴨川）' }, since: '2024/04' },
+  { id: 'C002', name: '井上 由美', kana: 'いのうえ ゆみ', status: '在籍', plan: '月額(2)', quota: 2, used: 2, ticket: null, last: 5, point: 'アプローチが課題。ゴルフ歴3年。週末は娘さんと練習', event: null, since: '2025/01' },
+  { id: 'C003', name: '上田 健司', kana: 'うえだ けんじ', status: '在籍', plan: '回数券', quota: 0, used: 0, ticket: 2, last: 9, point: 'ドライバーの飛距離アップ希望。腰に不安あり', event: { date: addDays(TODAY, 8), what: 'コンペ（社内）' }, since: '2025/06' },
+  { id: 'C004', name: '岡本 さくら', kana: 'おかもと さくら', status: '在籍', plan: 'R\'ism会員', quota: 8, used: 5, ticket: null, last: 1, point: 'ベストスコア86。80台安定が目標。パター練習熱心', event: null, since: '2023/11' },
+  { id: 'C005', name: '加藤 浩一', kana: 'かとう こういち', status: '在籍', plan: '月額(2)', quota: 2, used: 0, ticket: null, last: 34, point: '仕事が忙しく間隔が空きがち。フックに悩む', event: null, since: '2024/09' },
+  { id: 'C006', name: '木村 真理', kana: 'きむら まり', status: '休会', plan: '月額(2)', quota: 0, used: 0, ticket: null, last: 62, point: '出産のため休会中（12月復帰予定）', event: null, since: '2024/02' },
+  { id: 'C007', name: '小林 大輔', kana: 'こばやし だいすけ', status: '在籍', plan: '回数券', quota: 0, used: 0, ticket: 7, last: 12, point: 'クラブ買い替え検討中。工房に興味あり', event: null, since: '2025/08' },
+  { id: 'C008', name: '佐々木 恵', kana: 'ささき めぐみ', status: '在籍', plan: '月額(4)', quota: 4, used: 3, ticket: null, last: 2, point: '初心者。コースデビューに向けて練習中', event: { date: addDays(TODAY, 22), what: 'コースデビュー' }, since: '2026/08' },
+  { id: 'C009', name: '高橋 修', kana: 'たかはし おさむ', status: '在籍', plan: '月額(2)', quota: 2, used: 1, ticket: null, last: 6, point: 'シニア。柔軟性重視。左肩の可動域が狭い', event: null, since: '2023/05' },
+  { id: 'C010', name: '中村 葵', kana: 'なかむら あおい', status: '体験', plan: '体験', quota: 0, used: 0, ticket: null, last: null, point: 'アンケート：ゴルフ歴1年／100切りしたい／スライス', event: null, since: '2026/10' },
+  { id: 'C011', name: '西田 隆', kana: 'にしだ たかし', status: '在籍', plan: 'R\'ism会員', quota: 8, used: 7, ticket: null, last: 4, point: '競技志向。ショートゲーム強化中', event: { date: addDays(TODAY, 3), what: '月例杯' }, since: '2022/10' },
+  { id: 'C012', name: '藤井 智子', kana: 'ふじい ともこ', status: '在籍', plan: '回数券', quota: 0, used: 0, ticket: 1, last: 18, point: 'バンカーが苦手。ご主人もゴルフ', event: null, since: '2025/11' },
+];
+const cust = id => CUSTOMERS.find(c => c.id === id);
+
+const BOOKINGS = {
+  0: [['10:00', 'C004', 50], ['11:00', 'C009', 50], ['13:00', 'C010', 60, true], ['15:00', 'C001', 50], ['17:00', 'C008', 50], ['19:00', 'C011', 50]],
+  1: [['10:00', 'C002', 50], ['14:00', 'C003', 50], ['16:00', 'C007', 50], ['18:00', 'C012', 50]],
+};
+
+const NOTES = {
+  C001: [['10/20', '古賀', 'ドライバーが右に出やすい。グリップを少しストロングに。次回は切り返しのタイミング'], ['10/06', '千葉', 'アイアンは安定してきた。手首の痛みは今のところなし'], ['9/22', '古賀', '鴨川のラウンドに向けてコースマネジメントの話をした']],
+  C004: [['10/22', '千葉', 'パターの距離感◎。ロングパットの練習メニューを渡した'], ['10/15', '古賀', '80台を3回連続。次は75ヤード以内の精度']],
+  C008: [['10/21', '古賀', 'ドライバーが当たるようになって本人とても嬉しそう。コースデビューの持ち物リストを渡した']],
+  C011: [['10/19', '古賀', '月例杯に向けてアプローチ50本。ロブは封印する作戦']],
+  C009: [['10/17', '千葉', '左肩のストレッチを最初に5分。トップを無理に深くしない']],
+};
+
+const QUEUE = [
+  { code: '90c4', cid: 'C002', title: '井上 由美さん　10/22 のレッスン', why: '月額(2)の今月分（2回）を使い切っています。3回目はどう扱いますか？', acts: [['来月分から繰越', 1], ['都度払い（6,500円）', 0], ['回数券を買った', 0]] },
+  { code: '1b7e', cid: 'C005', title: '加藤 浩一さん　Stripeの支払い', why: '10/21 の月額の引き落としが失敗しています（カードの期限切れ）。', acts: [['LINEで連絡した', 1], ['確認済み・対応不要', 0]] },
+  { code: 'f30a', cid: 'C010', title: '中村 葵さん　体験のあと', why: '今日体験予定です。入会したらプランを選んでください。', acts: [['月額(2)で入会', 1], ['月額(4)で入会', 0], ['回数券', 0], ['今回は見送り', 0]] },
+  { code: '6d21', cid: 'C012', title: '藤井 智子さん　回数券の残り', why: '回数券の残りが1回です。次回の来店（10/24）で使い切ります。', acts: [['次回お声がけする', 1], ['もう伝えた', 0]] },
+];
+
+/* ================= 誰が見ているか ================= */
+let who = 'わか';
+const isOwner = () => who === 'わか';
+function renderWho() {
+  ['who1', 'who2', 'who3', 'who4'].forEach(id => document.getElementById(id).innerHTML = ['わか', '古賀', '千葉'].map(n => `<button class="${n === who ? 'on' : ''}" onclick="setWho('${n}')">${n}</button>`).join(''));
+  document.getElementById('tab-num').style.display = isOwner() ? '' : 'none';
+}
+function setWho(n) { who = n; renderWho(); if (!isOwner() && current === 'num') go('today'); renderAll(); toast(isOwner() ? 'わかさんの画面（売上も見える）' : `${n}さんの画面（売上は見えない）`); }
+
+/* ================= 小道具 ================= */
+const $ = s => document.querySelector(s);
+const yen = n => n.toLocaleString() + '円';
+function avatar(c) { const col = COLORS[CUSTOMERS.indexOf(c) % COLORS.length]; return `<div class="avatar" style="background:radial-gradient(circle at 30% 30%, ${col}, ${col}cc)">${c.name[0]}</div>`; }
+function remainHTML(c) {
+  if (c.status === '体験') return '<span class="tag sun">体験</span>';
+  if (c.status === '休会') return '<span class="tag gray">休会中</span>';
+  if (c.plan === '回数券') return `<span class="tag ${c.ticket <= 2 ? 'warn' : ''}">回数券 残${c.ticket}</span>`;
+  const left = c.quota - c.used;
+  return `<span class="tag ${left <= 0 ? 'warn' : ''}">${c.plan} 今月 残${left}/${c.quota}</span>`;
+}
+function meter(c) { if (!c.quota) return ''; return `<span class="meter">${Array.from({ length: c.quota }, (_, i) => `<i class="${i < c.used ? 'used' : ''}"></i>`).join('')}</span>`; }
+function toast(t) { const el = $('#toast'); el.textContent = t; el.classList.add('on'); clearTimeout(toast.t); toast.t = setTimeout(() => el.classList.remove('on'), 2000); }
+function openSheet(h) { $('#sheet-body').innerHTML = h; $('#sheet').scrollTop = 0; $('#sheet').classList.add('on'); $('#bg').classList.add('on'); }
+function closeSheet() { $('#sheet').classList.remove('on'); $('#bg').classList.remove('on'); }
+
+let current = 'today';
+document.querySelectorAll('.tabbar button').forEach(b => b.onclick = () => go(b.dataset.v));
+function go(v) { current = v; document.querySelectorAll('.tabbar button').forEach(x => x.classList.toggle('on', x.dataset.v === v)); document.querySelectorAll('.view').forEach(x => x.classList.toggle('on', x.id === 'v-' + v)); scrollTo(0, 0); }
+
+/* ================= 今日・明日 ================= */
+let dayOff = 0;
+document.querySelectorAll('#v-today .seg button').forEach(b => b.onclick = () => { dayOff = +b.dataset.d; document.querySelectorAll('#v-today .seg button').forEach(x => x.classList.toggle('on', x === b)); renderToday(); });
+function renderToday() {
+  const d = addDays(TODAY, dayOff), list = BOOKINGS[dayOff];
+  $('#t-date').textContent = `${d.getMonth() + 1}月${d.getDate()}日（${'日月火水木金土'[d.getDay()]}）`;
+  $('#t-hours').textContent = '営業 10:00〜21:00';
+  const trials = list.filter(x => x[3]).length;
+  $('#t-sum').innerHTML = `<div><div class="n">${list.length}<small>件</small></div><div class="muted">レッスン</div></div><div><div class="n">${trials}<small>人</small></div><div class="muted">体験</div></div>`
+    + (isOwner() ? `<div><div class="n" style="font-size:26px;padding-top:12px">${yen(list.length * 6500 + trials * 3000)}</div><div class="muted">見込み</div></div>` : '');
+  $('#t-list').innerHTML = list.map(([t, id, min, trial]) => {
+    const c = cust(id), ev = c.event && (c.event.date - d) / 864e5 <= 21 ? `<span class="tag sun">📅 ${fmt(c.event.date)} ${c.event.what}</span>` : '';
+    const last = NOTES[id]?.[0];
+    return `<div class="slot ${trial ? 'trial' : ''}" onclick="showCust('${id}')"><div class="time">${t}<small>${min}分</small></div><div class="body">
+      <div class="nm">${c.name}${trial ? '　<span class="tag sun">体験</span>' : ''}</div>
+      <div class="pt">${c.point}</div>
+      ${last ? `<div class="muted" style="margin-top:4px">前回（${last[0]} ${last[1]}）：${last[2].slice(0, 34)}…</div>` : ''}
+      <div class="tags">${trial ? '' : remainHTML(c)}${ev}</div></div></div>`;
+  }).join('');
+}
+
+/* ================= お客様 ================= */
+let filter = '在籍';
+const FILTERS = ['在籍', '体験', '休会', '30日来ていない', '残りわずか', 'すべて'];
+function renderFilters() { $('#c-filter').innerHTML = FILTERS.map(f => `<button class="chip ${f === filter ? 'on' : ''}" onclick="filter='${f}';renderFilters();renderCust()">${f}</button>`).join(''); }
+$('#c-q').oninput = renderCust;
+function renderCust() {
+  const q = $('#c-q').value.trim();
+  const list = CUSTOMERS.filter(c => {
+    if (q) return (c.name + c.kana).replace(/\s/g, '').includes(q.replace(/\s/g, ''));
+    if (filter === 'すべて') return true;
+    if (filter === '30日来ていない') return c.status === '在籍' && c.last >= 30;
+    if (filter === '残りわずか') return c.status === '在籍' && (c.plan === '回数券' ? c.ticket <= 2 : c.quota - c.used <= 0);
+    return c.status === filter;
+  });
+  $('#c-list').innerHTML = list.map(c => `<div class="cust" onclick="showCust('${c.id}')">${avatar(c)}<div class="main"><b>${c.name}</b><div class="pt">${c.point}</div><div>${remainHTML(c)}</div></div>
+    <div class="rt">${c.last == null ? '初来店' : c.last === 0 ? '今日' : `${c.last}日前`}<br>${meter(c)}</div></div>`).join('') || '<div class="muted" style="padding:30px 0;text-align:center">該当なし</div>';
+}
+function showCust(id) {
+  const c = cust(id), notes = NOTES[id] || [];
+  const lessons = c.last == null ? [] : [0, 1, 2, 3].map(i => addDays(TODAY, -(c.last + i * 9)));
+  openSheet(`
+    <div class="card-head">${avatar(c)}<div><div class="muted">${c.kana}　${c.id}</div><h3>${c.name}</h3><div class="muted">${c.status}・${c.since}〜</div></div></div>
+    <div class="point"><span class="lab">要点</span>${c.point}</div>
+    <div class="grid2">
+      <div class="box"><span class="lab">プラン</span><div class="v" style="font-size:18px">${c.plan}</div>${meter(c)}</div>
+      <div class="box"><span class="lab">${c.plan === '回数券' ? '回数券' : '今月の残り'}</span><div class="v">${c.plan === '回数券' ? c.ticket : c.status === '体験' ? '—' : c.quota - c.used}<small> 回</small></div></div>
+      <div class="box"><span class="lab">前回の来店</span><div class="v" style="font-size:18px">${c.last == null ? '—' : fmt(addDays(TODAY, -c.last))}</div><div class="muted">${c.last == null ? '' : c.last + '日前'}</div></div>
+      ${isOwner() ? `<div class="box"><span class="lab">今月のお支払い</span><div class="v" style="font-size:18px">${c.plan.startsWith('月額') ? yen(c.quota === 4 ? 17600 : 9800) : c.plan === '回数券' ? '—' : c.plan === '体験' ? yen(3000) : yen(29800)}</div><div class="muted">${c.plan.startsWith('月額') || c.plan.startsWith('R') ? 'Stripe' : ''}</div></div>` : `<div class="box"><span class="lab">次の予約</span><div class="v" style="font-size:18px">${BOOKINGS[1].some(b => b[1] === id) ? '明日' : BOOKINGS[0].some(b => b[1] === id) ? '今日' : '—'}</div></div>`}
+    </div>
+    ${c.event ? `<div class="event">📅<div><b>${fmt(c.event.date)}</b>　${c.event.what}<div class="muted">あと${Math.round((c.event.date - TODAY) / 864e5)}日</div></div></div>` : ''}
+    <div class="sec"><span class="eyebrow">KARTE</span><span class="muted">${notes.length}件</span></div>
+    <button class="btn green" onclick="writeNote('${id}')">＋ カルテを書く</button>
+    <div style="margin-top:14px">${notes.map(([d, by, tx]) => `<div class="note"><div class="meta">${d}　${by}</div><div class="tx">${tx}</div></div>`).join('') || '<div class="muted">まだありません</div>'}</div>
+    <div class="sec"><span class="eyebrow">LESSONS</span></div>
+    ${lessons.map((d, i) => `<div class="lesson"><span>${fmt(d)}　${['古賀', '千葉'][i % 2]}</span><span class="muted">${c.plan}${isOwner() ? '' : ''}</span></div>`).join('') || '<div class="muted">まだありません</div>'}
+    <div class="sec"><span class="eyebrow">CONTACT</span></div>
+    <div class="muted" style="line-height:1.9">${isOwner() ? '電話 090-0000-0000（架空）<br>メール sample@example.com' : '連絡先はわかさんだけが見られます'}</div>`);
+}
+function writeNote(id) {
+  const c = cust(id);
+  openSheet(`<div class="form"><h3>${c.name}さんのカルテ</h3>
+    <label>今日のレッスンで聞いたこと・やったこと</label><textarea id="n-tx" placeholder="例：ドライバーが右に出やすい。グリップを少しストロングに"></textarea>
+    <label>予定（ラウンド・コンペなど。あれば）</label><div style="display:flex;gap:8px"><input id="n-ed" type="date" style="flex:1"><input id="n-ev" placeholder="例：ラウンド（鴨川）" style="flex:1.4"></div>
+    <label>要点も書きかえる（100文字まで。空なら今のまま）</label><input id="n-pt" placeholder="${c.point}">
+    <div style="display:flex;gap:10px;margin-top:18px"><button class="btn" onclick="showCust('${id}')">やめる</button><button class="btn green" onclick="saveNote('${id}')">保存</button></div></div>`);
+}
+function saveNote(id) {
+  const tx = $('#n-tx').value.trim(); if (!tx) return toast('内容を入れてください');
+  (NOTES[id] ||= []).unshift([fmt(TODAY), who, tx]);
+  const pt = $('#n-pt').value.trim(); if (pt) cust(id).point = pt.slice(0, 100);
+  const ed = $('#n-ed').value, ev = $('#n-ev').value.trim(); if (ed && ev) cust(id).event = { date: new Date(ed + 'T00:00'), what: ev };
+  toast('カルテに書きました（見本なので保存はされません）'); showCust(id); renderAll();
+}
+
+/* ================= 確認 ================= */
+function renderQueue() {
+  $('#q-badge').textContent = QUEUE.length || '';
+  $('#q-badge').style.display = QUEUE.length ? '' : 'none';
+  $('#q-list').innerHTML = QUEUE.map((q, i) => `<div class="q" id="q${i}"><div class="code">NO.${q.code}</div><div class="ttl" onclick="showCust('${q.cid}')" style="cursor:pointer">${q.title}</div><div class="why">${q.why}</div>
+    <div class="acts">${q.acts.map(([l, main], j) => `<button class="${main ? 'main' : ''}" onclick="resolve(${i},${j})">${l}</button>`).join('')}<button class="later" onclick="toast('あとで（そのまま残ります）')">あとで</button></div></div>`).join('')
+    || '<div class="lock">🎉<br>確認することはありません</div>';
+}
+function resolve(i, j) {
+  const q = QUEUE[i], el = document.getElementById('q' + i);
+  el.classList.add('done');
+  setTimeout(() => { QUEUE.splice(i, 1); renderQueue(); toast(`「${q.acts[j][0]}」で反映しました（見本）`); }, 300);
+}
+
+/* ================= 数字（わかさんだけ） ================= */
+function renderNum() {
+  if (!isOwner()) { $('#n-body').innerHTML = '<div class="lock">🔒<br>売上の画面はわかさんだけが見られます</div>'; return; }
+  const months = [['5月', 612], ['6月', 655], ['7月', 701], ['8月', 642], ['9月', 728], ['10月', 694]];
+  const mx = Math.max(...months.map(m => m[1]));
+  const bars = (rows, unit) => { const m = Math.max(...rows.map(r => r[1])); return rows.map(([k, v]) => `<div class="hbar"><span>${k}</span><span class="tr"><i style="width:${v / m * 100}%"></i></span><span>${unit(v)}</span></div>`).join(''); };
+  $('#n-body').innerHTML = `
+    <div class="muted" style="margin-bottom:8px">2026年10月（23日まで）</div>
+    <div class="kpi"><div><div class="muted">売上</div><div class="v">69.4<small>万円</small></div><div class="d up">先月同日比 ＋6%</div></div>
+      <div><div class="muted">レッスン</div><div class="v">142<small>回</small></div><div class="d up">＋9回</div></div></div>
+    <div class="kpi" style="border-top:none"><div><div class="muted">在籍</div><div class="v">86<small>人</small></div><div class="d up">入会 4・退会 1</div></div>
+      <div><div class="muted">体験 → 入会</div><div class="v">4<small>/7人</small></div><div class="d">入会率 57%</div></div></div>
+    <div class="blk"><div class="lab">月別の売上（万円）</div><div class="cols">${months.map(([k, v], i) => `<div class="c"><span>${(v / 10).toFixed(0)}</span><i class="${i === months.length - 1 ? 'now' : ''}" style="height:${v / mx * 85}%"></i><span>${k}</span></div>`).join('')}</div></div>
+    <div class="blk"><div class="lab">売上の内訳</div>${bars([['月額', 412000], ['R\'ism会員', 149000], ['回数券', 78000], ['都度払い', 32500], ['体験', 21000], ['工房・物販', 1800]], v => (v / 10000).toFixed(1) + '万')}</div>
+    <div class="blk"><div class="lab">担当別レッスン</div>${bars([['古賀', 81], ['千葉', 61]], v => v + '回')}</div>
+    <div class="blk" style="border:none"><div class="lab">フォローしたい人</div>
+      ${CUSTOMERS.filter(c => c.status === '在籍' && (c.last >= 30 || (c.plan === '回数券' && c.ticket <= 2))).map(c => `<div class="cust" onclick="showCust('${c.id}')">${avatar(c)}<div class="main"><b>${c.name}</b><div class="pt">${c.last >= 30 ? `${c.last}日来ていない` : `回数券 残${c.ticket}`}</div></div></div>`).join('')}</div>`;
+}
+
+function renderAll() { renderToday(); renderFilters(); renderCust(); renderQueue(); renderNum(); }
+renderWho(); renderAll();
+</script>
+</body>
+</html>
