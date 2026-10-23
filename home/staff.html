@@ -1,0 +1,15 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow"><title>R'ism</title><meta name="apple-mobile-web-app-title" content="R'ism">
+<link rel="apple-touch-icon" href="staff.png"><link rel="icon" href="staff.png">
+<style>body{margin:0;font-family:-apple-system,"Hiragino Sans",sans-serif;color:#3a3f3c;background:#f4f9f6;letter-spacing:.03em}
+.w{max-width:420px;margin:0 auto;padding:48px 24px;line-height:1.9;display:none}img{width:84px;height:84px;border-radius:20px}
+h1{font-weight:400;font-size:20px;letter-spacing:.1em;margin:14px 0 4px}ol{padding-left:1.3em}a.b{display:inline-block;margin-top:14px;border:1px solid #3c7a64;color:#3c7a64;padding:8px 18px;border-radius:2px;text-decoration:none}</style></head>
+<body><div class="w" id="w"><img src="staff.png" alt=""><h1>R'ism</h1>
+<p>ホーム画面にアイコンを置く方法</p><ol><li>下の共有ボタン（□に↑）を押す</li><li>「ホーム画面に追加」を押す</li><li>右上の「追加」を押す</li></ol>
+<p style="font-size:13px;color:#8a918d">次からはアイコンを押すと、すぐに開きます。</p><a class="b" id="go" href="#">いま開く</a></div>
+<script>
+// ?add のときだけ案内を出す。ホーム画面から開いたときはすぐ本体へ。
+const target=(()=>{return 'https://script.google.com/macros/s/AKfycbzHRyRh5fSmzSQK_4wYfw-bYMxAIYUdzrZL9HM8P2SmzsE3FsIeHnJ9zqEcKTlQZHkeaw/exec';})();
+if(new URLSearchParams(location.search).has('add')){history.replaceState(null,'',location.pathname+location.hash);document.getElementById('w').style.display='block';document.getElementById('go').href=target||'#';}
+else if(target)location.replace(target);else{document.getElementById('w').style.display='block';}
+</script></body></html>
