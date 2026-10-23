@@ -8,7 +8,7 @@
 <title>R'ism 見本</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Maru+Gothic:wght@400;500;700&family=Klee+One:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Maru+Gothic:wght@400;500;700&family=Klee+One:wght@600&family=Noto+Sans+JP:wght@300;400;500;700&family=Josefin+Sans:wght@300;400&display=swap" rel="stylesheet">
 <style>
   :root {
     --paper: #f6f3ea; --card: #fffdf6; --ink: #2f3d37; --soft: #7b847f; --line: #e2ddcd;
@@ -180,10 +180,57 @@
   body.b .sec .eyebrow, body.b .lab { font-family: var(--hand); }
   body.b .kpi { border-top-color: #275a45; }
   body.b .cols .c i { background: #275a45; }
+  /* ===== C：すっきり（白地・薄いミント・深緑） ===== */
+  body.c { --paper: #ffffff; --card: #ffffff; --ink: #3a3f3c; --soft: #8a918d; --line: #e6ebe8; --green: #3c7a64; --aqua: #e9f4ef; --tabon: transparent; --red: #b8574f;
+    font-family: "Noto Sans JP", "Hiragino Sans", sans-serif; font-weight: 400; letter-spacing: .03em; }
+  body.c::before { filter: none; inset: 0; background: radial-gradient(circle at 115% 18%, #e9f4ef 0 34%, transparent 34.2%), radial-gradient(circle at -25% 78%, #eef6f2 0 30%, transparent 30.2%); }
+  body.c h1, body.c h2, body.c h3, body.c .slot .nm, body.c .cust .main b, body.c .q .ttl, body.c .slot .time, body.c .summary .n, body.c .box .v, body.c .kpi .v, body.c .event b, body.c .avatar { font-family: "Noto Sans JP", sans-serif; font-weight: 500; }
+  body.c .summary .n, body.c .slot .time, body.c .kpi .v, body.c .box .v { font-family: "Josefin Sans", "Noto Sans JP", sans-serif; font-weight: 300; }
+  body.c .mock-band { background: #f3f5f4; }
+  body.c .mock-band button.on { color: #fff; }
+  body.c .hero { background: transparent; }
+  body.c .hero .art, body.c .hills, body.c .empty-art { display: none; }
+  body.c .hero-in { min-height: 0; padding-bottom: 18px; }
+  body.c .hero-txt { padding-top: 40px; border-left: 1px solid var(--green); padding-left: 14px; margin-top: 10px; }
+  body.c .hero .eyebrow { font-family: "Josefin Sans", sans-serif; font-weight: 300; font-size: 12px; letter-spacing: .45em; color: var(--green); }
+  body.c .hero-txt h2 { font-weight: 300; font-size: 24px; letter-spacing: .12em; color: var(--ink); }
+  body.c .who { border-radius: 2px; border-color: var(--line); } body.c .who button { border-radius: 1px; } body.c .who button.on { background: var(--green); }
+  body.c .seg { border-color: var(--green); border-radius: 2px; } body.c .seg button.on { background: var(--green); color: #fff; }
+  body.c .summary { gap: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 14px 0; }
+  body.c .summary > div { flex: 1; text-align: center; } body.c .summary > div + div { border-left: 1px solid var(--line); }
+  body.c .slot, body.c .box, body.c .point, body.c .q, body.c .search, body.c .form input, body.c .form textarea { border-radius: 2px; border-color: var(--line); box-shadow: none; background: rgba(255,255,255,.92); }
+  body.c .slot { border-width: 0 0 1px 0; padding: 14px 4px; margin: 0; background: transparent; }
+  body.c .slot.trial { box-shadow: inset 2px 0 0 var(--green); padding-left: 12px; }
+  body.c .tag { border-radius: 2px; background: transparent; border: 1px solid #cfe1d8; color: var(--green); font-size: 10px; letter-spacing: .08em; }
+  body.c .tag.warn { border-color: #e7c6c2; color: var(--red); background: transparent; }
+  body.c .tag.sun, body.c .tag.gray { border-color: var(--line); color: var(--soft); background: transparent; }
+  body.c .slot.trial .tag.sun { border-color: #cfe1d8; color: var(--green); }
+  body.c .avatar { background: var(--aqua) !important; color: var(--green); font-weight: 400; }
+  body.c .chip { border-width: 1px; border-radius: 2px; } 
+  body.c .cust { border-bottom-style: solid; }
+  body.c .point, body.c .note .tx { font-family: "Noto Sans JP", sans-serif; font-size: 14px; }
+  body.c .point { background: var(--aqua); border: none; }
+  body.c .event { background: transparent; border: 1px solid var(--line); border-radius: 2px; }
+  body.c .note { border-left: 1px solid var(--green); }
+  body.c .lesson { border-bottom-style: solid; }
+  body.c .btn { border-width: 1px; border-radius: 2px; }
+  body.c .q .acts button { border-width: 1px; border-radius: 2px; }
+  body.c .q .code { color: var(--green); font-family: "Josefin Sans", sans-serif; letter-spacing: .3em; }
+  body.c .lab, body.c .point .lab, body.c .box .lab, body.c .blk .lab, body.c .eyebrow { font-family: "Josefin Sans", "Noto Sans JP", sans-serif; font-weight: 400; letter-spacing: .35em; }
+  body.c .kpi { border-top: 1px solid var(--green); border-bottom-style: solid; border-bottom-color: var(--line); }
+  body.c .blk { border-bottom-style: solid; border-bottom-color: var(--line); }
+  body.c .cols .c i { background: #9cc7b5; border-radius: 0; } body.c .cols .c i.now { background: var(--green); }
+  body.c .hbar .tr { border-radius: 0; height: 6px; } body.c .hbar .tr i { background: var(--green); }
+  body.c .tabbar { background: rgba(255,255,255,.96); }
+  body.c .tabbar button.on { color: var(--green); } body.c .tabbar button.on .ic { background: transparent; }
+  body.c .sheet { background: #fff; border-radius: 4px 4px 0 0; }
+  body.c .badge { background: var(--green); }
+  body.c .box .v small, body.c .kpi .v small, body.c .summary .n small { font-family: "Noto Sans JP", sans-serif; }
+  body.c .grab { background: #d9e3de; }
 </style>
 </head>
 <body>
-<div class="mock-band">見本（架空のデータ）　デザイン <button onclick="setTheme('a')" id="th-a">A 丘</button><button onclick="setTheme('b')" id="th-b">B 深緑</button></div>
+<div class="mock-band">見本（架空のデータ）　デザイン <button onclick="setTheme('a')" id="th-a">A 丘</button><button onclick="setTheme('b')" id="th-b">B 深緑</button><button onclick="setTheme('c')" id="th-c">C すっきり</button></div>
 
 <section class="view on" id="v-today">
   <header class="hero" data-art="today"><div class="hero-in"><div class="who" id="who1"></div><div class="hero-txt"><div class="eyebrow">R'ISM TODAY</div><h2 id="t-date"></h2></div><div class="art"></div></div><div class="hills"></div></header><div class="wrap">
@@ -288,13 +335,13 @@ function hills(t) {
   if (t === 'b') return `<svg viewBox="0 0 400 46" preserveAspectRatio="none"><path d="M0 46V30C40 30 70 4 120 4s70 26 110 26 60-22 100-22 70 16 70 16v22z" fill="#f7f4ec"/></svg>`;
   return `<svg viewBox="0 0 400 46" preserveAspectRatio="none"><path d="M0 22C60 4 120 6 180 18s130 2 220-12v40H0z" fill="#cfe3b8"/><path d="M0 34C70 18 140 18 220 30s120 0 180-10v26H0z" fill="#a9cf93"/><path d="M0 46V40c80-8 150-8 230 0s120 2 170-4v10z" fill="#f4f6ec"/></svg>`;
 }
-let theme = new URLSearchParams(location.search).get('t') === 'b' ? 'b' : 'a';
+let theme = ({ b: 'b', c: 'c' })[new URLSearchParams(location.search).get('t')] || 'a';
 function setTheme(t) {
   theme = t; document.body.className = t;
   history.replaceState(null, '', '?t=' + t);
   document.querySelectorAll('.hero').forEach(h => { h.querySelector('.art').innerHTML = scene(h.dataset.art, t); h.querySelector('.hills').innerHTML = hills(t); });
-  document.querySelectorAll('.tabbar .ic').forEach(i => i.innerHTML = ICONS[i.dataset.i](i.parentElement.classList.contains('on') ? (t === 'b' ? '#275a45' : '#4f8a68') : '#9aa39d'));
-  ['a', 'b'].forEach(x => document.getElementById('th-' + x).classList.toggle('on', x === t));
+  document.querySelectorAll('.tabbar .ic').forEach(i => i.innerHTML = ICONS[i.dataset.i](i.parentElement.classList.contains('on') ? (t === 'b' ? '#275a45' : t === 'c' ? '#3c7a64' : '#4f8a68') : '#9aa39d'));
+  ['a', 'b', 'c'].forEach(x => document.getElementById('th-' + x).classList.toggle('on', x === t));
   renderQueue();
 }
 
