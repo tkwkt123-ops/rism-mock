@@ -1,15 +1,17 @@
-<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow"><title>R'ism 経営</title><meta name="apple-mobile-web-app-title" content="R'ism 経営">
-<link rel="apple-touch-icon" sizes="180x180" href="https://tkwkt123-ops.github.io/rism-mock/home/biz.png?v=2"><link rel="icon" href="biz.png">
-<style>body{margin:0;font-family:-apple-system,"Hiragino Sans",sans-serif;color:#3a3f3c;background:#f5f8fb;letter-spacing:.03em}
-.w{max-width:420px;margin:0 auto;padding:48px 24px;line-height:1.9;display:none}img{width:84px;height:84px;border-radius:20px}
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="theme-color" content="#ffffff">
+<link rel="apple-touch-icon" sizes="180x180" href="https://tkwkt123-ops.github.io/rism-mock/home/biz.png?v=3"><link rel="icon" href="biz.png">
+<style>html,body{margin:0;height:100%;background:#fff}body{font-family:-apple-system,"Hiragino Sans",sans-serif;color:#3a3f3c;letter-spacing:.03em}
+iframe{position:fixed;inset:0;width:100%;height:100%;border:0;padding-top:env(safe-area-inset-top);box-sizing:border-box;background:#fff}
+.w{max-width:420px;margin:0 auto;padding:56px 24px;line-height:1.9;display:none;background:#f5f8fb;min-height:100%;box-sizing:border-box}img{width:84px;height:84px;border-radius:20px}
 h1{font-weight:400;font-size:20px;letter-spacing:.1em;margin:14px 0 4px}ol{padding-left:1.3em}a.b{display:inline-block;margin-top:14px;border:1px solid #3e5f7a;color:#3e5f7a;padding:8px 18px;border-radius:2px;text-decoration:none}</style></head>
 <body><div class="w" id="w"><img src="biz.png" alt=""><h1>R'ism 経営</h1>
-<p>ホーム画面にアイコンを置く方法</p><ol><li>下の共有ボタン（□に↑）を押す</li><li>「ホーム画面に追加」を押す</li><li>右上の「追加」を押す</li></ol>
-<p style="font-size:13px;color:#8a918d">次からはアイコンを押すと、すぐに開きます。</p><a class="b" id="go" href="#">いま開く</a></div>
+<p>ホーム画面にアイコンを置く方法</p><ol><li>この画面のまま、共有ボタン（□に↑）を押す</li><li>「ホーム画面に追加」を押す</li><li>アイコンが絵になっているのを見て、「追加」を押す</li></ol>
+<p style="font-size:13px;color:#8a918d">次からはアイコンを押すと、すぐに開きます。</p><a class="b" href="#" onclick="location.search='';return false">いま開く</a></div>
 <script>
-// ?add のときだけ案内を出す。ホーム画面から開いたときはすぐ本体へ。
+// ?add のときは置き方の案内。それ以外は本体をこの中に表示する。
 const target=(()=>{const k=new URLSearchParams(location.hash.slice(1)).get('k');return k?'https://script.google.com/macros/s/AKfycbxrcqxUZIrz3oJk_KJ8HEOxyUlR-jmKsWwChBmt__Y0DFWFc_YNpBJQgmb8gltq2_GL4A/exec?page=hp&k='+encodeURIComponent(k):'';})();
-if(new URLSearchParams(location.search).has('add')){history.replaceState(null,'',location.pathname+location.hash);document.getElementById('w').style.display='block';document.getElementById('go').href=target||'#';}
-else if(target)location.replace(target);else{document.getElementById('w').style.display='block';}
+if(new URLSearchParams(location.search).has('add')||!target){history.replaceState(null,'',location.pathname+location.hash);document.getElementById('w').style.display='block';}
+else{const f=document.createElement('iframe');f.src=target;f.allow='clipboard-write';document.body.appendChild(f);}
 </script></body></html>
