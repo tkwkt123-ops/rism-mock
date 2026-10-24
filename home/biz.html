@@ -8,7 +8,7 @@ iframe{position:fixed;inset:0;width:100%;height:100%;border:0;padding-top:env(sa
 h1{font-weight:400;font-size:20px;letter-spacing:.1em;margin:14px 0 4px}ol{padding-left:1.3em}a.b{display:inline-block;margin-top:14px;border:1px solid #3e5f7a;color:#3e5f7a;padding:8px 18px;border-radius:2px;text-decoration:none}</style></head>
 <body><div class="w" id="w"><img src="biz.png" alt=""><h1>R'ism 経営</h1>
 <p>ホーム画面にアイコンを置く方法</p><ol><li>この画面のまま、共有ボタン（□に↑）を押す</li><li>「ホーム画面に追加」を押す</li><li>アイコンが絵になっているのを見て、「追加」を押す</li></ol>
-<p style="font-size:13px;color:#8a918d">次からはアイコンを押すと、すぐに開きます。</p><a class="b" href="#" onclick="location.search='';return false">いま開く</a></div>
+<p style="font-size:13px;color:#8a918d">次からはアイコンを押すと、すぐに開きます。</p><a class="b" href="#" onclick="location.reload();return false">いま開く</a></div>
 <script>
 // ?add のときは置き方の案内。それ以外は本体をこの中に表示する。
 const target=(()=>{const k=new URLSearchParams(location.hash.slice(1)).get('k');return k?'https://script.google.com/macros/s/AKfycbxrcqxUZIrz3oJk_KJ8HEOxyUlR-jmKsWwChBmt__Y0DFWFc_YNpBJQgmb8gltq2_GL4A/exec?page=hp&k='+encodeURIComponent(k):'';})();
