@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>R'ism 工房（仮）｜青物横丁のゴルフ工房</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Shippori+Mincho:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F4EFE6; --paper2:#EBE3D6; --ink:#2C2925; --sub:#6E665C;
+  --line:#D6CCBD; --accent:#8A6A43; --dark:#2B2823;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:"Noto Sans JP",sans-serif;font-weight:300;line-height:2;letter-spacing:.04em;font-size:15px}
+img{display:block;width:100%;height:100%;object-fit:cover}
+a{color:inherit;text-decoration:none}
+.en{font-family:"Cormorant Garamond",serif;letter-spacing:.12em}
+.min{font-family:"Shippori Mincho",serif}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+/* header */
+header{position:fixed;inset:0 0 auto 0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:18px 28px;background:rgba(244,239,230,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:baseline;gap:10px}
+.logo .en{font-size:22px;font-weight:500}
+.logo small{font-size:11px;color:var(--sub);letter-spacing:.2em}
+nav{display:flex;gap:26px;font-size:13px}
+nav a .en{display:block;font-size:14px;line-height:1.2}
+nav a span{font-size:10px;color:var(--sub)}
+@media(max-width:820px){nav{display:none}}
+
+/* hero */
+.hero{position:relative;height:min(90vh,760px);min-height:520px}
+.hero img{filter:saturate(.75) brightness(.72)}
+.hero .copy{position:absolute;left:8%;bottom:14%;color:#fff}
+.hero h1{font-family:"Shippori Mincho",serif;font-weight:500;font-size:clamp(30px,4.6vw,52px);line-height:1.6;letter-spacing:.12em}
+.hero p{margin-top:18px;font-size:14px;letter-spacing:.14em;opacity:.9}
+.hero .en{position:absolute;right:6%;top:22%;color:#fff;writing-mode:vertical-rl;font-size:15px;opacity:.85}
+
+/* sections */
+section{padding:120px 0}
+.head{margin-bottom:56px}
+.head .en{font-size:42px;line-height:1;font-weight:400;color:var(--ink)}
+.head .ja{display:block;margin-top:12px;font-size:12px;color:var(--accent);letter-spacing:.25em}
+.lead{font-family:"Shippori Mincho",serif;font-size:clamp(20px,2.4vw,26px);line-height:2;letter-spacing:.1em}
+
+.intro{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.intro p+p{margin-top:1.2em}
+.intro .ph{aspect-ratio:4/5}
+@media(max-width:820px){.intro{grid-template-columns:1fr;gap:40px}}
+
+/* service */
+.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:36px}
+.svc article .ph{aspect-ratio:4/3;margin-bottom:22px}
+.svc .num{font-size:13px;color:var(--accent)}
+.svc h3{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:26px;letter-spacing:.12em;line-height:1.3}
+.svc h4{font-family:"Shippori Mincho",serif;font-weight:500;font-size:16px;margin:10px 0 10px}
+.svc p{font-size:13.5px;color:var(--sub)}
+@media(max-width:820px){.svc{grid-template-columns:1fr}}
+
+/* craftsman */
+.dark{background:var(--dark);color:#EDE6DA}
+.dark .head .en{color:#EDE6DA}
+.dark .head .ja{color:#C9A97C}
+.cm{display:grid;grid-template-columns:5fr 6fr;gap:72px;align-items:start}
+.cm .ph{aspect-ratio:3/4}
+.cm .name{font-family:"Shippori Mincho",serif;font-size:28px;letter-spacing:.2em;margin:6px 0 4px}
+.cm .role{font-size:12px;color:#C9A97C;letter-spacing:.2em}
+.cm p{margin-top:1.4em;font-size:14.5px}
+.cm dl{margin-top:36px;border-top:1px solid #4A453D}
+.cm dl div{display:grid;grid-template-columns:110px 1fr;padding:14px 0;border-bottom:1px solid #4A453D;font-size:13.5px}
+.cm dt{color:#C9A97C}
+.quote{margin-top:36px;font-family:"Shippori Mincho",serif;font-size:18px;line-height:2.1;padding-left:20px;border-left:1px solid #C9A97C}
+@media(max-width:820px){.cm{grid-template-columns:1fr;gap:40px}}
+
+/* works */
+.works{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.works a{background:#FBF8F3;display:block}
+.works .ph{aspect-ratio:1/1}
+.works .t{padding:18px 18px 22px}
+.works .tag{font-size:11px;color:var(--accent);letter-spacing:.2em}
+.works h3{font-family:"Shippori Mincho",serif;font-weight:500;font-size:15.5px;line-height:1.7;margin-top:6px}
+.more{display:inline-block;margin-top:40px;font-size:13px;border-bottom:1px solid var(--ink);padding-bottom:2px}
+@media(max-width:820px){.works{grid-template-columns:1fr 1fr}}
+
+/* price */
+.paper2{background:var(--paper2)}
+.price{display:grid;grid-template-columns:1fr 2fr;gap:72px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:15px 6px;border-bottom:1px solid var(--line);text-align:left;font-weight:300}
+thead th{font-size:11px;color:var(--sub);letter-spacing:.2em}
+td:nth-child(n+2),th:nth-child(n+2){text-align:right;white-space:nowrap}
+.note{margin-top:18px;font-size:12px;color:var(--sub);line-height:1.9}
+@media(max-width:820px){.price{grid-template-columns:1fr;gap:20px}}
+
+/* journal */
+.jn{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.jn .ph{aspect-ratio:4/3;margin-bottom:14px}
+.jn time{font-size:12px;color:var(--sub)}
+.jn h3{font-family:"Shippori Mincho",serif;font-weight:500;font-size:14.5px;line-height:1.8;margin-top:4px}
+@media(max-width:820px){.jn{grid-template-columns:1fr 1fr}}
+
+/* flow */
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line)}
+.flow div{padding:30px 22px 10px 0;border-right:1px solid var(--line);margin-right:22px}
+.flow div:last-child{border-right:none}
+.flow .en{font-size:34px;color:var(--accent);line-height:1}
+.flow h3{font-family:"Shippori Mincho",serif;font-weight:500;font-size:16px;margin:14px 0 8px}
+.flow p{font-size:13px;color:var(--sub)}
+@media(max-width:820px){.flow{grid-template-columns:1fr 1fr}.flow div{border-right:none}}
+
+/* faq */
+.faq details{border-bottom:1px solid var(--line);padding:22px 0}
+.faq summary{cursor:pointer;list-style:none;font-family:"Shippori Mincho",serif;font-size:16px;display:flex;gap:18px}
+.faq summary::before{content:"Q";font-family:"Cormorant Garamond",serif;color:var(--accent);font-size:20px;line-height:1.4}
+.faq details p{margin:12px 0 0 32px;font-size:14px;color:var(--sub)}
+
+/* contact */
+.contact{text-align:center}
+.contact .lead{margin-bottom:44px}
+.btns{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
+.btn{min-width:300px;padding:24px 28px;border:1px solid #EDE6DA;display:flex;flex-direction:column;align-items:center;gap:4px}
+.btn .en{font-size:13px;color:#C9A97C}
+.btn b{font-weight:400;font-size:22px;letter-spacing:.1em}
+.btn small{font-size:11.5px;opacity:.75}
+.btn.line{background:#EDE6DA;color:var(--dark)}
+.btn.line .en{color:var(--accent)}
+
+/* access */
+.acc{display:grid;grid-template-columns:1fr 1fr;gap:72px}
+.acc dl div{display:grid;grid-template-columns:100px 1fr;padding:14px 0;border-bottom:1px solid var(--line);font-size:14px}
+.acc dt{color:var(--sub);font-size:12.5px}
+.map{background:var(--paper2);min-height:320px;display:flex;align-items:center;justify-content:center;color:var(--sub);font-size:13px}
+@media(max-width:820px){.acc{grid-template-columns:1fr;gap:30px}}
+
+footer{padding:56px 0;border-top:1px solid var(--line);font-size:12px;color:var(--sub)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
+footer a{border-bottom:1px solid var(--sub)}
+
+/* 写真待ちの枠 */
+.ph{position:relative;overflow:hidden;background:#D9CFC0}
+.ph.wait{background:repeating-linear-gradient(135deg,#DED5C7 0 14px,#D6CCBC 14px 28px);display:flex;align-items:center;justify-content:center;text-align:center;color:#7C7264;font-size:12px;letter-spacing:.1em;padding:12px}
+.dark .ph.wait{background:repeating-linear-gradient(135deg,#3A362F 0 14px,#35312B 14px 28px);color:#9C9384}
+
+.sp{position:fixed;right:16px;bottom:16px;z-index:20;display:none;background:#06C755;color:#fff;padding:14px 20px;border-radius:999px;font-size:13px;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+@media(max-width:820px){.sp{display:block}section{padding:84px 0}.head .en{font-size:34px}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="#"><span class="en">R'ism KOBO</span><small>リズム工房（仮）</small></a>
+  <nav>
+    <a href="#service"><span class="en">SERVICE</span><span>メニュー</span></a>
+    <a href="#craftsman"><span class="en">CRAFTSMAN</span><span>職人紹介</span></a>
+    <a href="#works"><span class="en">WORKS</span><span>修理事例</span></a>
+    <a href="#price"><span class="en">PRICE</span><span>料金</span></a>
+    <a href="#journal"><span class="en">JOURNAL</span><span>工房だより</span></a>
+    <a href="#contact"><span class="en">CONTACT</span><span>ご相談</span></a>
+  </nav>
+</header>
+
+<div class="hero">
+  <img src="https://golfstudio-rism.co.jp/wp-content/uploads/2026/02/6d8c0350192e0bb251c6d6d2e072b144-1-1024x576.jpg" alt="工房の作業台">
+  <span class="en">GOLF CLUB WORKSHOP — AOMONO-YOKOCHO</span>
+  <div class="copy">
+    <h1>スイングを知り、<br>クラブを作る。</h1>
+    <p>青物横丁・品川シーサイドのゴルフ工房</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap intro">
+    <div>
+      <p class="lead">その違和感、<br>クラブのせいかもしれません。</p>
+      <p style="margin-top:2em">グリップが滑る、球がつかまらない、なんとなく振りにくい。<br>R'ism 工房では、クラブの数値だけでなく、あなたのスイングや球筋、振り心地まで見たうえで、一本一本に手を入れます。</p>
+      <p>グリップ交換1本から、シャフト交換、ロフト・ライ角調整、クラブ製作まで。スタジオの会員でない方も、どうぞお気軽にお越しください。</p>
+    </div>
+    <div class="ph wait">写真：古賀さんの手元のアップ<br>（グリップを巻いているところ など）</div>
+  </div>
+</section>
+
+<section id="service" class="paper2">
+  <div class="wrap">
+    <div class="head"><span class="en">SERVICE</span><span class="ja">メニュー</span></div>
+    <div class="svc">
+      <article>
+        <div class="ph wait">写真：グリップ交換</div>
+        <span class="en num">01</span>
+        <h3>REPAIR</h3>
+        <h4>握るたびに、しっくりくる。</h4>
+        <p>グリップ交換、シャフト交換・カット・伸ばし。使い込んだクラブを、もう一度気持ちよく振れる状態に整えます。</p>
+      </article>
+      <article>
+        <div class="ph wait">写真：ロフト・ライ角の調整機</div>
+        <span class="en num">02</span>
+        <h3>ADJUST</h3>
+        <h4>数度の違いが、球筋を変える。</h4>
+        <p>ロフト・ライ角調整、長さや重さのバランス調整。スイングを見ながら、あなたに合う角度を探します。</p>
+      </article>
+      <article>
+        <div class="ph"><img src="https://golfstudio-rism.co.jp/wp-content/uploads/2026/10/rism-s002-1-1793267717819.jpg" alt="ヘッドとシャフト"></div>
+        <span class="en num">03</span>
+        <h3>CUSTOM</h3>
+        <h4>世界にひとつの、自分の一本。</h4>
+        <p>ヘッドとシャフトの組み合わせから、一本のクラブを作ります。打席で試打しながら決められるのは、スタジオ併設の工房ならでは。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="craftsman" class="dark">
+  <div class="wrap">
+    <div class="head"><span class="en">CRAFTSMAN</span><span class="ja">職人紹介</span></div>
+    <div class="cm">
+      <div class="ph wait">写真：古賀さんのポートレート<br>（作業台の前で）</div>
+      <div>
+        <div class="role">クラフトマン／ゴルフコーチ</div>
+        <div class="name">古賀 〇〇</div>
+        <p>ゴルフメーカー勤務時代から、延べ2,000人以上のフィッティングとクラブ製作に携わる。JLPGAツアーの帯同コーチとして10年以上、女子プロのスイング指導とクラブの製作・調整を担当。</p>
+        <p>「スイングがわかる職人」として、数字だけでは見えない“振りやすさ”を大切にしています。</p>
+        <dl>
+          <div><dt>経験</dt><dd>フィッティング・製作 延べ2,000人以上</dd></div>
+          <div><dt>ツアー</dt><dd>JLPGAツアー帯同 10年以上</dd></div>
+          <div><dt>得意</dt><dd>（例）アイアンのライ角調整、シャフト選び</dd></div>
+        </dl>
+        <p class="quote">「クラブは、道具である前に<br>その人のスイングの一部です。」<br><small style="font-size:11px;color:#C9A97C">― 古賀さんの言葉（仮）</small></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="works">
+  <div class="wrap">
+    <div class="head"><span class="en">WORKS</span><span class="ja">修理事例</span></div>
+    <div class="works">
+      <a href="#">
+        <div class="ph"><img src="https://golfstudio-rism.co.jp/wp-content/uploads/2026/10/rism-s002-2-1793267720840.jpg" alt="スペック" style="object-fit:contain;background:#fff;padding:12px"></div>
+        <div class="t"><span class="tag">リシャフト</span><h3>ドライバーをCRAZYのシャフトに。46インチ・SR・振動数215cpmに仕上げ</h3></div>
+      </a>
+      <a href="#">
+        <div class="ph wait">写真：作業前・作業後</div>
+        <div class="t"><span class="tag">グリップ交換</span><h3>（例）アイアン8本のグリップを、手に合う太さに交換</h3></div>
+      </a>
+      <a href="#">
+        <div class="ph wait">写真：調整機にかけたアイアン</div>
+        <div class="t"><span class="tag">ライ角調整</span><h3>（例）右に出る球の原因はライ角でした</h3></div>
+      </a>
+    </div>
+    <a class="more" href="#">修理事例をすべて見る →</a>
+  </div>
+</section>
+
+<section id="price" class="paper2">
+  <div class="wrap price">
+    <div class="head"><span class="en">PRICE</span><span class="ja">料金</span></div>
+    <div>
+      <table>
+        <thead><tr><th>メニュー</th><th>一般</th><th>スタジオ会員</th></tr></thead>
+        <tbody>
+          <tr><td>グリップ交換（店内でご購入）</td><td>330円</td><td>330円</td></tr>
+          <tr><td>グリップ交換（持ち込み）</td><td>880円〜</td><td>660円</td></tr>
+          <tr><td>グリップ抜き</td><td>880円〜</td><td>660円</td></tr>
+          <tr><td>シャフト交換</td><td>5,500円〜</td><td>4,400円</td></tr>
+          <tr><td>シャフト抜き</td><td>2,200円</td><td>1,650円</td></tr>
+          <tr><td>シャフト挿着</td><td>3,300円〜</td><td>2,750円</td></tr>
+          <tr><td>シャフト伸ばし</td><td>4,400円</td><td>3,300円</td></tr>
+          <tr><td>シャフトカット</td><td>2,750円〜</td><td>2,200円</td></tr>
+          <tr><td>ロフト・ライ角調整</td><td>1,100円</td><td>660円</td></tr>
+        </tbody>
+      </table>
+      <p class="note">※1本あたりの作業工賃です。グリップやシャフトなどの部品代は別途かかります。<br>※クラブの種類や状態により、料金が変わる場合があります。<br>※作業内容によっては即日お渡しも可能です。</p>
+    </div>
+  </div>
+</section>
+
+<section id="journal">
+  <div class="wrap">
+    <div class="head"><span class="en">JOURNAL</span><span class="ja">工房だより・クラブの豆知識</span></div>
+    <div class="jn">
+      <a href="#"><div class="ph wait">写真</div><time>2026.11.—</time><h3>グリップの替えどきは？ 3つのサイン</h3></a>
+      <a href="#"><div class="ph wait">写真</div><time>2026.11.—</time><h3>シャフトの「硬さ」は、数字だけで選ばない</h3></a>
+      <a href="#"><div class="ph wait">写真</div><time>2026.10.—</time><h3>アイアンのライ角、ずれていませんか</h3></a>
+      <a href="#"><div class="ph wait">写真</div><time>2026.10.—</time><h3>雨の日のあと、クラブにしてほしいこと</h3></a>
+    </div>
+    <a class="more" href="#">記事をすべて見る →</a>
+  </div>
+</section>
+
+<section class="paper2">
+  <div class="wrap">
+    <div class="head"><span class="en">FLOW</span><span class="ja">ご依頼の流れ</span></div>
+    <div class="flow">
+      <div><span class="en">01</span><h3>ご相談</h3><p>お電話かLINEで、クラブのお悩みや作業内容をお聞かせください。</p></div>
+      <div><span class="en">02</span><h3>ご来店</h3><p>クラブをお持ちください。必要に応じて打席で試打し、状態を確認します。</p></div>
+      <div><span class="en">03</span><h3>お見積り・作業</h3><p>内容と料金・お渡し日をご説明し、ご納得いただいてから作業します。</p></div>
+      <div><span class="en">04</span><h3>お渡し</h3><p>仕上がりを一緒に確認。使い方や手入れのコツもお伝えします。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="wrap">
+    <div class="head"><span class="en">Q&amp;A</span><span class="ja">よくあるご質問</span></div>
+    <details open><summary>スタジオの会員でなくても利用できますか？</summary><p>はい、どなたでもご利用いただけます。工房だけのご利用も大歓迎です。</p></details>
+    <details><summary>持ち込みのグリップやシャフトにも対応できますか？</summary><p>対応しています。クラブや部品の種類によっては作業できない場合があるため、事前にご相談ください。</p></details>
+    <details><summary>当日中に受け取れますか？</summary><p>グリップ交換など、作業内容や当日の状況によっては即日対応が可能です。</p></details>
+    <details><summary>予約は必要ですか？</summary><p>（要確認）スムーズにご案内するため、事前にお電話かLINEでご連絡ください。</p></details>
+  </div>
+</section>
+
+<section id="contact" class="dark contact">
+  <div class="wrap">
+    <div class="head"><span class="en">CONTACT</span><span class="ja">ご相談・ご予約</span></div>
+    <p class="lead">クラブのこと、<br>まずは気軽にご相談ください。</p>
+    <div class="btns">
+      <a class="btn" href="tel:0367548802"><span class="en">TEL</span><b>03-6754-8802</b><small>営業時間内にお電話ください</small></a>
+      <a class="btn line" href="https://lin.ee/sF5uoj6"><span class="en">LINE</span><b>LINEで相談する</b><small>写真を送っていただくとスムーズです</small></a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap acc">
+    <div>
+      <div class="head"><span class="en">ACCESS</span><span class="ja">アクセス</span></div>
+      <dl>
+        <div><dt>店名</dt><dd>R'ism 工房（仮）<br><small style="color:var(--sub)">Golf Studio R'ism 内</small></dd></div>
+        <div><dt>住所</dt><dd>〒140-0002<br>東京都品川区東品川3-27-25 オフィス・イン品川 3F</dd></div>
+        <div><dt>最寄り駅</dt><dd>京急「青物横丁」駅／りんかい線「品川シーサイド」駅</dd></div>
+        <div><dt>電話</dt><dd>03-6754-8802</dd></div>
+        <div><dt>営業時間</dt><dd>（要確認）火曜定休</dd></div>
+      </dl>
+    </div>
+    <div class="map">Googleマップ</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="en">© R'ism KOBO</span>
+    <span>レッスン・打席のご利用は <a href="https://golfstudio-rism.co.jp/">Golf Studio R'ism</a> へ</span>
+  </div>
+</footer>
+
+<a class="sp" href="https://lin.ee/sF5uoj6">LINEで相談</a>
+</body>
+</html>
