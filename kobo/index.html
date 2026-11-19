@@ -160,6 +160,47 @@ footer a{text-decoration:underline}
 .sp a{flex:1;text-align:center;padding:14px;border-radius:999px;font-size:14px;font-weight:500;box-shadow:0 4px 16px rgba(0,0,0,.14)}
 @media(max-width:860px){.sp{display:flex}section{padding:80px 0}}
 @media(max-width:860px){.facts div{padding:22px 4px}.facts .big{font-size:22px;white-space:nowrap}.facts p{font-size:11px;line-height:1.6}}
+
+/* --- 余白を詰めて、作りを素直に --- */
+section{padding:64px 0}
+.head{margin-bottom:24px;padding-bottom:12px;border-bottom:1px solid var(--ink)}
+.head h2{font-size:22px;letter-spacing:.1em}
+.ph,.hero .ph,.cm .ph,.band,.svc article,table,.flow div,.contact,.map{border-radius:3px}
+.hero{gap:40px;padding-top:32px;padding-bottom:56px;grid-template-columns:1fr 1.25fr}
+.hero .tag{background:none;padding:0;margin-bottom:14px;color:var(--sub);border-radius:0}
+.hero h1{font-size:clamp(32px,4vw,48px);line-height:1.4}
+.hero p{margin-top:16px}
+.cred{list-style:none;margin-top:20px;border-top:1px solid var(--line)}
+.cred li{font-size:13.5px;padding:9px 0;border-bottom:1px solid var(--line)}
+.cred b{font-weight:500;color:var(--indigo)}
+.hero .btns{margin-top:24px}
+.btn{border-radius:3px;padding:13px 22px}
+.cta{border-radius:3px}
+.intro{gap:48px}
+.intro h3{margin-bottom:14px}
+.svc{gap:20px}
+.svc article{background:none}
+.svc .t{padding:14px 0 0}
+.svc li{border-radius:2px}
+.cm{gap:48px}
+.cm blockquote{margin:18px 0}
+.band{margin:0;max-width:none;height:min(50vh,440px)}
+.works{gap:20px}
+.works .ph{margin-bottom:10px}
+.more{margin-top:24px}
+.price{gap:40px}
+.jn{gap:16px}
+.flow{gap:0;border-top:1px solid var(--line)}
+.flow div{background:none;padding:18px 18px 18px 0;border-bottom:1px solid var(--line)}
+.flow .n{background:none;color:var(--indigo);width:auto;height:auto;font-size:13px;font-weight:500}
+.flow .n::before{content:"STEP "}
+.flow h3{margin:4px 0}
+.contact{padding:44px 28px;border-radius:3px}
+.contact .btns{margin-top:24px}
+.sp a{border-radius:4px}
+.acc{gap:40px}
+footer{padding:28px 0 90px}
+@media(max-width:860px){section{padding:48px 0}.hero{grid-template-columns:1fr;padding-top:12px;padding-bottom:40px;gap:20px}.hero .ph{aspect-ratio:4/3}.intro,.cm,.price,.acc{gap:24px}.flow{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -183,6 +224,7 @@ footer a{text-decoration:underline}
     <span class="tag">青物横丁・品川シーサイドのゴルフ工房</span>
     <h1>スイングを知り、<br>クラブを作る。</h1>
     <p>グリップ交換1本から、シャフト交換、ロフト・ライ角調整、クラブ製作まで。ツアーを知る職人が、一本ずつ手を入れます。</p>
+    <ul class="cred"><li>メーカー時代から延べ<b>2,000人以上</b>のフィッティング・製作</li><li>JLPGAツアー帯同<b>10年以上</b></li><li>グリップ交換<b>1本から</b>、会員以外の方もOK</li></ul>
     <div class="btns">
       <a class="btn pri" href="#contact">クラブのことを相談する</a>
       <a class="btn sec" href="#price">料金を見る</a>
@@ -191,13 +233,6 @@ footer a{text-decoration:underline}
   <div class="ph"><img src="img/loft.jpg" alt="ロフト角を測る手元" style="object-position:50% 45%"></div>
 </div>
 
-<div class="wrap">
-  <div class="facts">
-    <div><div class="big">2,000<small>人以上</small></div><p>フィッティング・製作の経験</p></div>
-    <div><div class="big">10<small>年以上</small></div><p>JLPGAツアー帯同</p></div>
-    <div><div class="big">1<small>本から</small></div><p>会員以外の方もOK</p></div>
-  </div>
-</div>
 
 <section>
   <div class="wrap intro">
@@ -213,7 +248,7 @@ footer a{text-decoration:underline}
 
 <section id="service" class="alt">
   <div class="wrap">
-    <div class="head"><span class="no">01</span><h2>メニュー</h2></div>
+    <div class="head"><h2>メニュー</h2></div>
     <div class="svc">
       <article>
         <div class="ph"><img src="img/back.jpg" alt="作業台に向かう" style="object-position:50% 50%"></div>
@@ -233,7 +268,7 @@ footer a{text-decoration:underline}
 
 <section id="craftsman">
   <div class="wrap">
-    <div class="head"><span class="no">02</span><h2>職人紹介</h2></div>
+    <div class="head"><h2>職人紹介</h2></div>
     <div class="cm">
       <div class="ph"><img src="img/portrait.jpg" alt="古賀さん" style="object-position:50% 35%"></div>
       <div>
@@ -255,7 +290,7 @@ footer a{text-decoration:underline}
 
 <section id="works">
   <div class="wrap">
-    <div class="head"><span class="no">03</span><h2>修理事例</h2></div>
+    <div class="head"><h2>修理事例</h2></div>
     <div class="works">
       <a href="#">
         <div class="ph" style="background:#fff"><img src="https://golfstudio-rism.co.jp/wp-content/uploads/2026/10/rism-s002-2-1793267720840.jpg" alt="スペック" style="object-fit:contain;padding:14px"></div>
@@ -277,7 +312,7 @@ footer a{text-decoration:underline}
 <section id="price" class="alt">
   <div class="wrap price">
     <div>
-      <div class="head" style="margin-bottom:16px"><span class="no">04</span><h2>料金</h2></div>
+      <div class="head" style="margin-bottom:16px"><h2>料金</h2></div>
       <p class="lead">1本あたりの作業工賃です。<br>作業内容によっては即日お渡しも可能です。</p>
     </div>
     <div>
@@ -302,7 +337,7 @@ footer a{text-decoration:underline}
 
 <section id="journal">
   <div class="wrap">
-    <div class="head"><span class="no">05</span><h2>工房だより</h2></div>
+    <div class="head"><h2>工房だより</h2></div>
     <div class="jn">
       <a href="#"><div class="ph"><img src="img/tools.jpg" alt="" style="object-position:40% 40%"></div><time>2026.11</time><h3>グリップの替えどきは？ 3つのサイン</h3></a>
       <a href="#"><div class="ph"><img src="img/inspect.jpg" alt="" style="object-position:30% 50%"></div><time>2026.11</time><h3>シャフトの「硬さ」は、数字だけで選ばない</h3></a>
@@ -315,7 +350,7 @@ footer a{text-decoration:underline}
 
 <section class="alt">
   <div class="wrap">
-    <div class="head"><span class="no">06</span><h2>ご依頼の流れ</h2></div>
+    <div class="head"><h2>ご依頼の流れ</h2></div>
     <div class="flow">
       <div><span class="n">1</span><h3>ご相談</h3><p>お電話かLINEで、お悩みや作業内容をお聞かせください。</p></div>
       <div><span class="n">2</span><h3>ご来店</h3><p>クラブをお持ちください。必要に応じて打席で試打して確認します。</p></div>
@@ -327,7 +362,7 @@ footer a{text-decoration:underline}
 
 <section class="faq">
   <div class="wrap">
-    <div class="head"><span class="no">07</span><h2>よくあるご質問</h2></div>
+    <div class="head"><h2>よくあるご質問</h2></div>
     <details open><summary>スタジオの会員でなくても利用できますか？</summary><p>はい、どなたでもご利用いただけます。工房だけのご利用も大歓迎です。</p></details>
     <details><summary>持ち込みのグリップやシャフトにも対応できますか？</summary><p>対応しています。クラブや部品の種類によっては作業できない場合があるため、事前にご相談ください。</p></details>
     <details><summary>当日中に受け取れますか？</summary><p>グリップ交換など、作業内容や当日の状況によっては即日対応が可能です。</p></details>
@@ -349,7 +384,7 @@ footer a{text-decoration:underline}
 <section>
   <div class="wrap acc">
     <div>
-      <div class="head"><span class="no">08</span><h2>アクセス</h2></div>
+      <div class="head"><h2>アクセス</h2></div>
       <dl>
         <div><dt>店名</dt><dd>リズム工房（Golf Studio R'ism 内）</dd></div>
         <div><dt>住所</dt><dd>〒140-0002 東京都品川区東品川3-27-25<br>オフィス・イン品川 3F</dd></div>
