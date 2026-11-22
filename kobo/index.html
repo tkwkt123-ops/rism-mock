@@ -7,134 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#ECE8E2;--panel:#FFFFFF;--ink:#2B2B2B;--sub:#7A766F;--line:#DDD8D0;--accent:#3A4A60}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font-family:"Noto Sans JP",sans-serif;font-weight:400;font-size:13.5px;line-height:2;letter-spacing:.05em;-webkit-font-smoothing:antialiased}
-img{display:block;width:100%;height:100%;object-fit:cover}
-a{color:inherit;text-decoration:none}
-.tw{font-family:"Courier Prime",monospace;letter-spacing:.08em}
-.wrap{max-width:1000px;margin:0 auto;padding:0 20px}
-
-/* header */
-header{position:fixed;inset:0 0 auto;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:16px 24px;color:#fff;transition:background .3s,color .3s}
-header.on{background:rgba(236,232,226,.95);color:var(--ink);backdrop-filter:blur(6px)}
-.logo{line-height:1.2}
-.logo b{display:block;font-weight:500;font-size:15px;letter-spacing:.2em}
-.logo span{font-size:10px;opacity:.75}
-nav{display:flex;gap:22px;font-size:12px;align-items:center}
-nav .cta{border:1px solid currentColor;padding:5px 14px}
-@media(max-width:820px){nav a:not(.cta){display:none}}
-
-/* hero */
-.hero{position:relative;height:100svh;min-height:560px;overflow:hidden;background:#222}
-.hero img{opacity:.72}
-.hero .copy{position:absolute;right:6%;bottom:9%;color:#fff;text-align:right}
-.hero .copy p.jp{font-size:clamp(15px,1.8vw,19px);font-weight:300;letter-spacing:.3em;line-height:2.2}
-.hero .copy p.tw{font-size:11px;margin-top:14px;opacity:.85}
-.hero .scroll{position:absolute;left:24px;bottom:24px;color:#fff;font-size:10px;opacity:.7;writing-mode:vertical-rl}
-
-/* notice bar */
-.bar{background:var(--accent);color:#fff;text-align:center;font-size:12px;padding:10px}
-.bar a{text-decoration:underline}
-
-.lead{text-align:center;padding:72px 20px 56px;font-size:14px;line-height:2.4}
-.lead h2{font-weight:400;font-size:17px;letter-spacing:.25em;margin-bottom:24px}
-
-/* panels */
-.panel{background:var(--panel);border-radius:8px;padding:36px 36px;margin-bottom:24px}
-.ttl{display:flex;align-items:baseline;gap:14px;margin-bottom:22px}
-.ttl h2{font-weight:500;font-size:16px;letter-spacing:.15em}
-.ttl .tw{font-size:11px;color:var(--sub)}
-.ttl a{margin-left:auto;font-size:11.5px;color:var(--sub)}
-@media(max-width:820px){.panel{padding:26px 20px;border-radius:6px}}
-
-/* craftsman */
-.cm{display:grid;grid-template-columns:300px 1fr;gap:36px;align-items:start}
-.cm .ph{aspect-ratio:4/5;border-radius:4px;overflow:hidden}
-.cm .name{font-size:18px;letter-spacing:.25em;margin-bottom:2px}
-.cm .role{font-size:11.5px;color:var(--sub);margin-bottom:18px}
-.cm p+p{margin-top:1em}
-.cm .q{border-left:2px solid var(--accent);padding-left:14px;margin:18px 0;font-size:14px}
-@media(max-width:820px){.cm{grid-template-columns:1fr;gap:20px}}
-
-/* menu */
-.menu{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.menu .ph{aspect-ratio:4/3;border-radius:4px;overflow:hidden;margin-bottom:12px}
-.menu h3{font-weight:500;font-size:14px;letter-spacing:.1em}
-.menu h3 .tw{font-size:10.5px;color:var(--sub);font-weight:400;margin-left:8px}
-.menu p{font-size:12.5px;color:var(--sub);line-height:1.9;margin-top:4px}
-@media(max-width:820px){.menu{grid-template-columns:1fr}}
-
-/* horizontal rows */
-.row{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;scrollbar-width:thin}
-.row a{flex:0 0 240px;scroll-snap-align:start}
-.row .ph{aspect-ratio:4/3;border-radius:4px;overflow:hidden;margin-bottom:8px;background:#F3F1ED}
-.row h3{font-weight:500;font-size:12.5px;line-height:1.7}
-.row .tag{font-size:10.5px;color:var(--sub)}
-.ph.wait{display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--sub)}
-
-/* gallery strip */
-.gallery{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:200px 200px;gap:8px;margin:48px 0}
-.gallery div{overflow:hidden;border-radius:4px}
-.gallery div:first-child{grid-row:span 2}
-@media(max-width:820px){.gallery{grid-template-columns:1fr 1fr;grid-template-rows:180px 120px 120px}.gallery div:first-child{grid-column:span 2;grid-row:auto}}
-
-/* price */
-table{width:100%;border-collapse:collapse;font-size:13px}
-th,td{padding:11px 4px;border-bottom:1px solid var(--line);text-align:left;font-weight:400}
-thead th{font-size:11px;color:var(--sub)}
-td:nth-child(n+2),th:nth-child(n+2){text-align:right;white-space:nowrap}
-.note{margin-top:14px;font-size:11.5px;color:var(--sub);line-height:1.9}
-
-/* flow & faq */
-.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
-.flow div{border-top:1px solid var(--ink);padding-top:12px}
-.flow .tw{font-size:11px;color:var(--sub)}
-.flow h3{font-weight:500;font-size:14px;margin:2px 0 4px}
-.flow p{font-size:12.5px;color:var(--sub);line-height:1.9}
-@media(max-width:820px){.flow{grid-template-columns:1fr 1fr}}
-details{border-bottom:1px solid var(--line);padding:14px 0}
-summary{cursor:pointer;list-style:none;font-weight:500}
-summary::-webkit-details-marker{display:none}
-summary::before{content:"Q. ";font-family:"Courier Prime";color:var(--accent)}
-details p{margin-top:6px;color:var(--sub);font-size:12.5px}
-
-/* contact */
-.contact{position:relative;height:420px;border-radius:8px;overflow:hidden;margin-bottom:24px;background:#222}
-.contact img{opacity:.5}
-.contact .in{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;padding:20px}
-.contact h2{font-weight:400;font-size:17px;letter-spacing:.2em}
-.contact p{font-size:12.5px;opacity:.85;margin-top:8px}
-.contact .btns{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap;justify-content:center}
-.contact .btns a{min-width:200px;padding:13px 20px;font-size:13px;border:1px solid #fff}
-.contact .btns a.line{background:#06C755;border-color:#06C755}
-
-.info{display:grid;grid-template-columns:1fr 1fr;gap:36px}
-.info dl div{display:grid;grid-template-columns:80px 1fr;padding:9px 0;border-bottom:1px solid var(--line);font-size:12.5px}
-.info dt{color:var(--sub)}
-.map{background:#F3F1ED;border-radius:4px;min-height:240px;display:flex;align-items:center;justify-content:center;color:var(--sub);font-size:12px}
-@media(max-width:820px){.info{grid-template-columns:1fr;gap:20px}}
-
-footer{padding:40px 20px 100px;text-align:center;font-size:11px;color:var(--sub)}
-footer .tw{display:block;font-size:12px;margin-bottom:6px;color:var(--ink)}
-footer a{text-decoration:underline}
-
-.sp{position:fixed;left:12px;right:12px;bottom:12px;z-index:30;display:none;gap:8px}
-.sp a{flex:1;text-align:center;padding:12px;font-size:13px;border-radius:4px;box-shadow:0 2px 12px rgba(0,0,0,.15)}
-@media(max-width:820px){.sp{display:flex}}
-@media(max-width:820px){
- .lead{text-align:left;padding:48px 24px 40px;line-height:2.1}
- .lead h2{font-size:16px;letter-spacing:.08em;line-height:1.9;margin-bottom:16px}
- .lead .ln{display:inline}
- .bar{font-size:11.5px;line-height:1.8}
- .hero .copy p.jp{letter-spacing:.2em}
-}
-.nw{display:inline-block}
-.lead .ln{display:block}
-@media(max-width:820px){.lead .ln{display:inline}}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -146,6 +19,7 @@ footer a{text-decoration:underline}
     <a href="#works">修理事例</a>
     <a href="#price">料金</a>
     <a href="#journal">工房だより</a>
+    <a href="https://golfstudio-rism.co.jp/" target="_blank">Golf Studio R'ism ↗</a>
     <a class="cta" href="#contact">相談する</a>
   </nav>
 </header>
@@ -196,22 +70,22 @@ footer a{text-decoration:underline}
 <div class="wrap">
 
   <div class="panel" id="works">
-    <div class="ttl"><h2>修理事例</h2><span class="tw">works</span><a href="#">すべてみる ›</a></div>
+    <div class="ttl"><h2>修理事例</h2><span class="tw">works</span><a href="works.html">すべてみる ›</a></div>
     <div class="row">
-      <a href="#"><div class="ph" style="background:#fff"><img src="https://golfstudio-rism.co.jp/wp-content/uploads/2026/10/rism-s002-2-1793267720840.jpg" alt="" style="object-fit:contain;padding:10px"></div><span class="tag">リシャフト</span><h3>ドライバーをCRAZYのシャフトに。46インチ・SRで仕上げ</h3></a>
-      <a href="#"><div class="ph"><img src="img/lie.jpg" alt=""></div><span class="tag">ライ角調整</span><h3>（例）右に出る球の原因は、ライ角でした</h3></a>
-      <a href="#"><div class="ph"><img src="img/grip1.jpg" alt="下巻きテープを巻く" style="object-position:50% 45%"></div><span class="tag">グリップ交換</span><h3>（例）アイアン8本を手に合う太さに</h3></a>
-      <a href="#"><div class="ph wait">写真</div><span class="tag">ロフト調整</span><h3>（例）ウェッジの距離の階段をそろえる</h3></a>
+      <a href="post.html"><div class="ph" style="background:#fff"><img src="https://golfstudio-rism.co.jp/wp-content/uploads/2026/10/rism-s002-2-1793267720840.jpg" alt="" style="object-fit:contain;padding:10px"></div><span class="tag">リシャフト</span><h3>ドライバーをCRAZYのシャフトに。46インチ・SRで仕上げ</h3></a>
+      <a href="post.html"><div class="ph"><img src="img/lie.jpg" alt=""></div><span class="tag">ライ角調整</span><h3>（例）右に出る球の原因は、ライ角でした</h3></a>
+      <a href="post.html"><div class="ph"><img src="img/grip1.jpg" alt="下巻きテープを巻く" style="object-position:50% 45%"></div><span class="tag">グリップ交換</span><h3>（例）アイアン8本を手に合う太さに</h3></a>
+      <a href="post.html"><div class="ph wait">写真</div><span class="tag">ロフト調整</span><h3>（例）ウェッジの距離の階段をそろえる</h3></a>
     </div>
   </div>
 
   <div class="panel" id="journal">
-    <div class="ttl"><h2>工房だより</h2><span class="tw">journal</span><a href="#">すべてみる ›</a></div>
+    <div class="ttl"><h2>工房だより</h2><span class="tw">journal</span><a href="journal.html">すべてみる ›</a></div>
     <div class="row">
-      <a href="#"><div class="ph"><img src="img/grip3.jpg" alt="グリップの下巻きテープを巻く" style="object-position:50% 45%"></div><span class="tag">2026.11</span><h3>グリップの替えどきは？ 3つのサイン</h3></a>
-      <a href="#"><div class="ph"><img src="img/inspect.jpg" alt=""></div><span class="tag">2026.11</span><h3>シャフトの「硬さ」は数字だけで選ばない</h3></a>
-      <a href="#"><div class="ph"><img src="img/lie2.jpg" alt=""></div><span class="tag">2026.10</span><h3>アイアンのライ角、ずれていませんか</h3></a>
-      <a href="#"><div class="ph"><img src="img/bench.jpg" alt=""></div><span class="tag">2026.10</span><h3>雨の日のあと、クラブにしてほしいこと</h3></a>
+      <a href="post.html"><div class="ph"><img src="img/grip3.jpg" alt="グリップの下巻きテープを巻く" style="object-position:50% 45%"></div><span class="tag">2026.11</span><h3>グリップの替えどきは？ 3つのサイン</h3></a>
+      <a href="post.html"><div class="ph"><img src="img/inspect.jpg" alt=""></div><span class="tag">2026.11</span><h3>シャフトの「硬さ」は数字だけで選ばない</h3></a>
+      <a href="post.html"><div class="ph"><img src="img/lie2.jpg" alt=""></div><span class="tag">2026.10</span><h3>アイアンのライ角、ずれていませんか</h3></a>
+      <a href="post.html"><div class="ph"><img src="img/bench.jpg" alt=""></div><span class="tag">2026.10</span><h3>雨の日のあと、クラブにしてほしいこと</h3></a>
     </div>
   </div>
 
@@ -249,7 +123,7 @@ footer a{text-decoration:underline}
     <details open><summary>スタジオの会員でなくても利用できますか？</summary><p>はい、どなたでもご利用いただけます。工房だけのご利用も大歓迎です。</p></details>
     <details><summary>持ち込みのグリップやシャフトにも対応できますか？</summary><p>対応しています。部品の種類によっては作業できない場合があるため、事前にご相談ください。</p></details>
     <details><summary>当日中に受け取れますか？</summary><p>グリップ交換など、作業内容や当日の状況によっては即日対応が可能です。</p></details>
-    <details><summary>予約は必要ですか？</summary><p>（要確認）スムーズにご案内するため、事前にお電話かLINEでご連絡ください。</p></details>
+    <details><summary>予約は必要ですか？</summary><p>予約は必須ではありませんが、ラウンドレッスンで不在の日や、レッスン中でお待たせしてしまう時間があります。事前にお電話かLINEでご連絡いただくとスムーズです。</p></details>
   </div>
 
   <div class="contact" id="contact">
@@ -272,9 +146,19 @@ footer a{text-decoration:underline}
         <div><dt>住所</dt><dd>東京都品川区東品川3-27-25 オフィス・イン品川 3F</dd></div>
         <div><dt>最寄り</dt><dd>京急「青物横丁」駅／りんかい線「品川シーサイド」駅</dd></div>
         <div><dt>電話</dt><dd>03-6754-8802</dd></div>
-        <div><dt>営業時間</dt><dd>（要確認）火曜定休</dd></div>
+        <div><dt>営業時間</dt><dd>月・水・木　13:00〜23:00<br>金・土　11:00〜23:00<br>日・祝　10:00〜18:00<br>火曜定休</dd></div>
       </dl>
       <div class="map">Googleマップ</div>
+    </div>
+  </div>
+
+  <div class="studio">
+    <div class="ph"><img src="https://golfstudio-rism.co.jp/wp-content/uploads/2026/02/76b313c00e44a5f225be464b8624dbed-e1772163021895-1024x576.jpg" alt="Golf Studio R'ismの打席"></div>
+    <div class="in">
+      <span class="tw" style="font-size:11px;color:var(--sub)">golf studio</span>
+      <h2>Golf Studio R'ism</h2>
+      <p>リズム工房は、ゴルフスタジオ R'ism の中にあります。レッスン・打席のご利用はこちらから。</p>
+      <a class="btn" href="https://golfstudio-rism.co.jp/" target="_blank">スタジオのサイトへ ›</a>
     </div>
   </div>
 
